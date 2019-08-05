@@ -1,4 +1,4 @@
-package com.java.prototipo.view;
+package view;
 
 public class TelaEventos extends javax.swing.JFrame {
     public static String listData [] = new String[20];

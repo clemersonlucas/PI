@@ -1,4 +1,4 @@
-package com.java.prototipo.view;
+package view;
 
 public class TelaAgendarConsulta extends javax.swing.JFrame {
     public TelaAgendarConsulta() {

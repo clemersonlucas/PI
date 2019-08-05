@@ -1,4 +1,4 @@
-package com.java.prototipo.view;
+package view;
 
 
 public class TelaListaDeConsultas extends javax.swing.JFrame {

@@ -1,4 +1,4 @@
-package com.java.prototipo.view;
+package view;
 
 public class TelaInicial extends javax.swing.JFrame {
     public TelaInicial() {
