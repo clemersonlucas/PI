@@ -93,15 +93,21 @@ public class Paciente {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        
-        
         final Paciente other = (Paciente) obj;
-        
-        if ((!Objects.equals(this.senha, other.senha)) || 
-                (!Objects.equals(this.cpf, other.cpf))) {
+        if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
-        
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
         return true;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" + "senha=" + senha + ", cpf=" + cpf + '}';
+    }
+
+    
+    
 }

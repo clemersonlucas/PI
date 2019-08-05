@@ -2,38 +2,23 @@ package model;
 
 import controller.Paciente;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class AcessoBanco {
     public static final String PATH_ABSOLUTO = "src//model//MySQL.ban";
     
-    public static ArrayList <Paciente> arrayList = new ArrayList<>();    
-   
-    public static void atualizarArray (){
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(PATH_ABSOLUTO);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(arrayList);
-            
-            objectOutputStream.close();
-            fileOutputStream.close();
-        
-        } catch (FileNotFoundException ex) {
-        } catch (IOException ex) {
-        }      
-    }    
+    public static HashSet <Paciente> banco = new HashSet<>();
     
     public static void escreverObjeto (Paciente paciente) {
         try {
-            arrayList = AcessoBanco.lerObjetos ();
+            banco = AcessoBanco.ler();
             FileOutputStream fileOutputStream = new FileOutputStream(PATH_ABSOLUTO);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
            
-            
             // devemos escrever a linha na tabela ja existente 
-            arrayList.add(paciente);
-            objectOutputStream.writeObject(arrayList);
+            banco.add(paciente);
+            objectOutputStream.writeObject(banco);
             
             objectOutputStream.close();
             fileOutputStream.close();
@@ -42,17 +27,33 @@ public class AcessoBanco {
         } catch (IOException ex) {
         }
     }
-  
-    public static ArrayList<Paciente> lerObjetos (){
+   public static HashSet<Paciente> ler (){
         try {
             FileInputStream fileInputStream = new FileInputStream(PATH_ABSOLUTO);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            arrayList = (ArrayList<Paciente>) objectInputStream.readObject();
+            banco = (HashSet<Paciente>) objectInputStream.readObject();
     
         } catch (FileNotFoundException ex) {
-        } catch (IOException ex) {
         } catch (ClassNotFoundException ex) {
+        } catch (IOException ex) {
         }
-        return arrayList;
+        return banco;
     }
+   
+    public static boolean verficaCadastroUsuario (Paciente paciente){
+        ler();
+        
+        for (Paciente p : banco){
+            if (p.equals(paciente)){
+                return true;
+            }
+        }
+      
+        return false;
+    
+    }
+   
+   
+   
+
 }

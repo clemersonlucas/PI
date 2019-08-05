@@ -1,6 +1,7 @@
 package view;
 
 import controller.Paciente;
+import java.util.ArrayList;
 import model.AcessoBanco;
 
 
@@ -157,14 +158,8 @@ public class TelaLogin extends javax.swing.JFrame {
         boolean estaBanco = false;
         Paciente paciente = new Paciente(campoTextoCpf.getText(), campoTextoSenha.getText());
         
-        for (Paciente p : AcessoBanco.arrayList){
-            if (p.equals(paciente)){
-                estaBanco = true;
-                break;
-            }
-        }
-        
-        if (estaBanco == true){
+      
+        if (AcessoBanco.verficaCadastroUsuario(paciente)){
             this.setVisible(false);
             new TelaInicial().setVisible(true); 
         }else {
