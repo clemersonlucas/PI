@@ -1,72 +1,58 @@
 package model;
 
 import controller.Paciente;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 
 public class AcessoBanco {
+    public static final String PATH_ABSOLUTO = "src//model//MySQL.ban";
     
-    // String para o caminho do arquivo do banco
-    private static final String CAMINHO_BANCO = 
-            "/home/clmr/NetBeansProjects/Projeto Integrador/src/model/MySQL.ban";
-    
-
-    // vamos criar um banco apenas para o paciente
-    public static ArrayList<Paciente> bancoPaciente = new ArrayList<>();
-    
-    
-    // assim que iniciar o Array List será iniciado
-    public AcessoBanco (){
-        
-    }
-    
-    public static void escreverPaciente (Paciente paciente){
+    public static ArrayList <Paciente> arrayList = new ArrayList<>();    
+   
+    public static void atualizarArray (){
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(CAMINHO_BANCO);
-            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+            FileOutputStream fileOutputStream = new FileOutputStream(PATH_ABSOLUTO);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(arrayList);
             
-            // importante fechar os objetos de escrita
-            bufferedOutputStream.close();
+            objectOutputStream.close();
             fileOutputStream.close();
-            
+        
         } catch (FileNotFoundException ex) {
-            System.err.println("Erro: " + ex.getMessage());
         } catch (IOException ex) {
-            System.err.println("Erro: " + ex.getMessage());
-        }
-    }   
-
-
-    public static void lerPacientes (){
+        }      
+    }    
+    
+    public static void escreverObjeto (Paciente paciente) {
         try {
-            FileInputStream fileInputStream = new FileInputStream(CAMINHO_BANCO);
-            BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+            arrayList = AcessoBanco.lerObjetos ();
+            FileOutputStream fileOutputStream = new FileOutputStream(PATH_ABSOLUTO);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+           
             
-            // escrever os dados no arrayList
+            // devemos escrever a linha na tabela ja existente 
+            arrayList.add(paciente);
+            objectOutputStream.writeObject(arrayList);
             
-            Paciente paciente = (Paciente) fileInputStream.read();
-            bancoPaciente.add(paciente);
-            
-            
-            // importante fechar os objetos de escrita
-            bufferedInputStream.close();
-            fileInputStream.close();
-            
+            objectOutputStream.close();
+            fileOutputStream.close();
+        
         } catch (FileNotFoundException ex) {
-            System.err.println("Erro: " + ex.getMessage());
         } catch (IOException ex) {
-            System.err.println("Erro: " + ex.getMessage());
         }
-    }   
+    }
+  
+    public static ArrayList<Paciente> lerObjetos (){
+        try {
+            FileInputStream fileInputStream = new FileInputStream(PATH_ABSOLUTO);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            arrayList = (ArrayList<Paciente>) objectInputStream.readObject();
     
-
-
-
-    
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+        return arrayList;
+    }
 }
