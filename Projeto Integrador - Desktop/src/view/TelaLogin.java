@@ -1,9 +1,13 @@
 package view;
 
+import controller.Paciente;
+import model.AcessoBanco;
+
 
 public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
+        lblNotificação.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -14,12 +18,13 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanelTelaDeFundo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldCpfUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldSenhaUsuario = new javax.swing.JTextField();
+        campoTextoSenha = new javax.swing.JTextField();
         jButtonEntrar = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
+        campoTextoCpf = new javax.swing.JTextField();
+        lblNotificação = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -40,19 +45,12 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Cpf:");
 
-        jTextFieldCpfUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextFieldCpfUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCpfUsuarioActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Senha:");
 
-        jTextFieldSenhaUsuario.addActionListener(new java.awt.event.ActionListener() {
+        campoTextoSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSenhaUsuarioActionPerformed(evt);
+                campoTextoSenhaActionPerformed(evt);
             }
         });
 
@@ -77,49 +75,65 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
         jLabelLogo.setText("jLabel3");
 
+        campoTextoCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTextoCpfActionPerformed(evt);
+            }
+        });
+
+        lblNotificação.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNotificação.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout jPanelTelaDeFundoLayout = new javax.swing.GroupLayout(jPanelTelaDeFundo);
         jPanelTelaDeFundo.setLayout(jPanelTelaDeFundoLayout);
         jPanelTelaDeFundoLayout.setHorizontalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap(139, Short.MAX_VALUE)
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldCpfUsuario)
-                            .addComponent(jTextFieldSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoTextoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoTextoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(124, 124, 124))
+            .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCpfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addGap(84, 84, 84)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(campoTextoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoTextoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(66, 66, 66)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102))
+                .addGap(56, 56, 56)
+                .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,15 +146,31 @@ public class TelaLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 467, Short.MAX_VALUE)
+            .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        this.setVisible(false);
-        new TelaInicial().setVisible(true); 
+
+        boolean estaBanco = false;
+        Paciente paciente = new Paciente(campoTextoCpf.getText(), campoTextoSenha.getText());
+        
+        for (Paciente p : AcessoBanco.arrayList){
+            if (p.equals(paciente)){
+                estaBanco = true;
+                break;
+            }
+        }
+        
+        if (estaBanco == true){
+            this.setVisible(false);
+            new TelaInicial().setVisible(true); 
+        }else {
+            lblNotificação.setText("Você não está Cadastrado");
+            lblNotificação.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
@@ -148,9 +178,13 @@ public class TelaLogin extends javax.swing.JFrame {
         new TelaCadastro().setVisible(true);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void jTextFieldSenhaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSenhaUsuarioActionPerformed
+    private void campoTextoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSenhaUsuarioActionPerformed
+    }//GEN-LAST:event_campoTextoSenhaActionPerformed
+
+    private void campoTextoCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTextoCpfActionPerformed
 
     private void jTextFieldCpfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                       
         // TODO add your handling code here:
@@ -165,6 +199,8 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoTextoCpf;
+    private javax.swing.JTextField campoTextoSenha;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JLabel jLabel1;
@@ -173,7 +209,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelTelaDeFundo;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JTextField jTextFieldCpfUsuario;
-    private javax.swing.JTextField jTextFieldSenhaUsuario;
+    private javax.swing.JLabel lblNotificação;
     // End of variables declaration//GEN-END:variables
 }
