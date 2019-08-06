@@ -1,51 +1,50 @@
 package controller;
 
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 public class Paciente {
-    private String nome;      // nome do paciente
-    private String senha;     // senha pra logar 
-    private String cpf;       // cpf do paciente
-    private String sus;       // número do sus
-    private Date nascimento;  // data de nasciemnto do paciente
+    // atributos da classe 
+    private String pathFotoUsuario;
+    private String nome;
+    private String cpf;
+    private String senha;
+    private String numeroId;
+    
+    
+    private Prontuario prontuario;
+    private ArrayList<Historico> historico;
+    private ArrayList<Medicamento> remedios;
+    private ArrayList<Consulta> consultas;
+    
+    public Paciente(String cpf, String senha) {
+        
+        this.cpf = "000";
+        this.senha = "brigadeiro";
+                
+        this.historico = new ArrayList<>();
+        this.remedios = new ArrayList<>();
+        this.consultas = new ArrayList<>();
+    }
 
-    // método construtor parametrizado
-    public Paciente(String nome, String senha, String cpf, String sus, Date nascimento) {
+    public Paciente(String pathFotoUsuario, String nome, String cpf, String senha, String numeroId, Prontuario prontuario, ArrayList<Historico> historico, ArrayList<Medicamento> remedios, ArrayList<Consulta> consultas) {
+        this.pathFotoUsuario = pathFotoUsuario;
         this.nome = nome;
-        this.senha = senha;
-        this.cpf = cpf;
-        this.sus = sus;
-        this.nascimento = nascimento;
-    }
-    
-    // construtor parametrizado para senha e cpf
-    public Paciente (String cpf, String senha){
         this.cpf = cpf;
         this.senha = senha;
+        this.numeroId = numeroId;
+        this.prontuario = prontuario;
+        this.historico = historico;
+        this.remedios = remedios;
+        this.consultas = consultas;
     }
     
-    
-    // impedir que o paciente seja criado sem parametros
-    private Paciente (){}
-    
-    
-    // métodos getters e setters da nossa classe
-
+   
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getCpf() {
@@ -56,32 +55,49 @@ public class Paciente {
         this.cpf = cpf;
     }
 
-    public String getSus() {
-        return sus;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setSus(String sus) {
-        this.sus = sus;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public Date getNascimento() {
-        return nascimento;
+    public Prontuario getProntuario() {
+        return prontuario;
     }
 
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
+    public void setProntuario(Prontuario prontuario) {
+        this.prontuario = prontuario;
+    }
+
+    public ArrayList<Historico> getHistorico() {
+        return historico;
+    }
+
+    public void setHistorico(ArrayList<Historico> historico) {
+        this.historico = historico;
+    }
+
+    public ArrayList<Medicamento> getRemedios() {
+        return remedios;
+    }
+
+    public void setRemedios(Medicamento remedio) {
+        this.remedios.add(remedio);
+    }
+
+    public ArrayList<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(ArrayList<Consulta> consultas) {
+        this.consultas = consultas;
     }
     
     
-    // método implementado para comparar apenas 
-    // a senha e o cpf do paciente da classe
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
+    // vamos fazer o objeto da classe apenas comparar
+    // com o cpf e senha do paciente
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -94,20 +110,19 @@ public class Paciente {
             return false;
         }
         final Paciente other = (Paciente) obj;
-        if (!Objects.equals(this.senha, other.senha)) {
+        if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }
-        if (!Objects.equals(this.cpf, other.cpf)) {
+        if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Paciente{" + "senha=" + senha + ", cpf=" + cpf + '}';
-    }
-
+    
+    
+    
+    
+   
     
     
 }
