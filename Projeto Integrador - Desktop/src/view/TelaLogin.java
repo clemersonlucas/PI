@@ -1,14 +1,16 @@
 package view;
 
-import controller.Paciente;
-import java.util.ArrayList;
+import controller.Medico;
 import model.AcessoBanco;
 
 
 public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
-        lblNotificação.setVisible(false);
+        campoTextoCpf.setText("50670962460");
+        campoTextoSenha.setText("brigadeiro");
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -82,15 +84,16 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
-        lblNotificação.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNotificação.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lblNotificação.setForeground(new java.awt.Color(255, 0, 51));
+        lblNotificação.setText("Tela de Login");
 
         javax.swing.GroupLayout jPanelTelaDeFundoLayout = new javax.swing.GroupLayout(jPanelTelaDeFundo);
         jPanelTelaDeFundo.setLayout(jPanelTelaDeFundoLayout);
         jPanelTelaDeFundoLayout.setHorizontalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addContainerGap(139, Short.MAX_VALUE)
+                .addContainerGap(133, Short.MAX_VALUE)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,13 +109,10 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(124, 124, 124))
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
@@ -132,9 +132,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(39, 39, 39)
+                .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,24 +147,31 @@ public class TelaLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+            .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 467, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-
         boolean estaBanco = false;
-        Paciente paciente = new Paciente(campoTextoCpf.getText(), campoTextoSenha.getText());
+        Medico medico = new Medico (campoTextoCpf.getText(), campoTextoSenha.getText());
+        AcessoBanco.readDatabase();
         
-      
-        if (AcessoBanco.verficaCadastroUsuario(paciente)){
+        for (Medico m : AcessoBanco.banco){
+            if (medico.equals(m)){
+                AcessoBanco.medicoLogado = m;
+                estaBanco = true;
+                break;
+            }
+        }
+        
+        if (estaBanco == true){
             this.setVisible(false);
             new TelaInicial().setVisible(true); 
+            
         }else {
             lblNotificação.setText("Você não está Cadastrado");
-            lblNotificação.setVisible(true);
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 

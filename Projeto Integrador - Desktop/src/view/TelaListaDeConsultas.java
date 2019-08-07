@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.Button;
+import javax.swing.JFrame;
+
 
 public class TelaListaDeConsultas extends javax.swing.JFrame {
 
@@ -12,6 +15,7 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
         listData[0] = "Consulta com o dentista (17/10/2019)";
         listData[1] = "Consulta com o pediatra (01/09/2019)";
         listData[2] = "Consulta com o nutricionista (22/03/2019)";
+        listData[3] = "Consulta com o ginicologista (13/03/2019)";
         
         jList1.setListData(listData);
     }
@@ -20,12 +24,16 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jPanelTelaDeFundo = new javax.swing.JPanel();
         jButtonVoltar = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
+        lblNotificação = new javax.swing.JLabel();
+        jButtonAdicionar = new javax.swing.JButton();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,6 +43,7 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
         jButtonVoltar.setBackground(new java.awt.Color(0, 102, 102));
         jButtonVoltar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonVoltar.setText("Voltar");
+        jButtonVoltar.setPreferredSize(new java.awt.Dimension(52, 23));
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVoltarActionPerformed(evt);
@@ -44,62 +53,79 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
         jLabelLogo.setText("jLabel3");
 
+        jList1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jList1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jList1.setAlignmentX(10.0F);
+        jList1.setAlignmentY(10.0F);
+        jList1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jList1);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Consultas Agendadas");
+        lblNotificação.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lblNotificação.setForeground(new java.awt.Color(255, 0, 51));
+        lblNotificação.setText("Consultas Agendadas");
+
+        jButtonAdicionar.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonAdicionar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAdicionar.setText("Adiconar");
+        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTelaDeFundoLayout = new javax.swing.GroupLayout(jPanelTelaDeFundo);
         jPanelTelaDeFundo.setLayout(jPanelTelaDeFundoLayout);
         jPanelTelaDeFundoLayout.setHorizontalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207))
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -111,6 +137,10 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
         new TelaInicial().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
+    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+        
+    }//GEN-LAST:event_jButtonAdicionarActionPerformed
+
    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -121,11 +151,13 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonVoltar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanelTelaDeFundo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNotificação;
     // End of variables declaration//GEN-END:variables
 }

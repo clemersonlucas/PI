@@ -1,8 +1,13 @@
 package view;
 
+import model.AcessoBanco;
+
 public class TelaInicial extends javax.swing.JFrame {
     public TelaInicial() {
         initComponents();
+        
+        lblNomeMedico.setText(AcessoBanco.medicoLogado.getNome().toString());
+    
     }
 
     @SuppressWarnings("unchecked")
@@ -19,9 +24,10 @@ public class TelaInicial extends javax.swing.JFrame {
         jButtonEditarProntuario = new javax.swing.JButton();
         jButtonAgendarConsulta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblNomeMedico = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButtonEditarFarmacia = new javax.swing.JButton();
+        lblNotificação = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -30,7 +36,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonConfirmarConsulta.setBackground(new java.awt.Color(0, 102, 102));
         jButtonConfirmarConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConfirmarConsulta.setText("Consultas Agendadas");
+        jButtonConfirmarConsulta.setText("Consultas");
+        jButtonConfirmarConsulta.setPreferredSize(new java.awt.Dimension(127, 23));
         jButtonConfirmarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarConsultaActionPerformed(evt);
@@ -72,7 +79,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonConfirmarConsulta2.setBackground(new java.awt.Color(0, 102, 102));
         jButtonConfirmarConsulta2.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConfirmarConsulta2.setText("Cadastrar Paciente");
+        jButtonConfirmarConsulta2.setText("Cadastrar");
+        jButtonConfirmarConsulta2.setPreferredSize(new java.awt.Dimension(127, 23));
         jButtonConfirmarConsulta2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarConsulta2ActionPerformed(evt);
@@ -99,10 +107,10 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Tec. Enfermagem");
+        jLabel1.setText("Medico Geral");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Caio César Penha Dantas");
+        lblNomeMedico.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblNomeMedico.setText("Caio César");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user.png"))); // NOI18N
 
@@ -116,6 +124,10 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        lblNotificação.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lblNotificação.setForeground(new java.awt.Color(255, 0, 51));
+        lblNotificação.setText("Seja bem vindo!");
+
         javax.swing.GroupLayout jPanelTelaDeFundoLayout = new javax.swing.GroupLayout(jPanelTelaDeFundo);
         jPanelTelaDeFundo.setLayout(jPanelTelaDeFundoLayout);
         jPanelTelaDeFundoLayout.setHorizontalGroup(
@@ -123,6 +135,7 @@ public class TelaInicial extends javax.swing.JFrame {
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButtonConfirmarConsulta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -143,17 +156,16 @@ public class TelaInicial extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
                                         .addComponent(jButtonEditarFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButtonFazerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(36, Short.MAX_VALUE))
+                                        .addComponent(jButtonFazerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(48, 48, 48)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34))))
+                            .addComponent(lblNomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,15 +173,15 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblNomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(83, 83, 83)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConfirmarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,7 +196,9 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonFazerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEditarFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,6 +222,9 @@ public class TelaInicial extends javax.swing.JFrame {
     private void jButtonConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarConsultaActionPerformed
         this.setVisible(false);
         new TelaListaDeConsultas().setVisible(true);
+        
+        
+        
     }//GEN-LAST:event_jButtonConfirmarConsultaActionPerformed
 
 
@@ -272,9 +289,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton jButtonFazerLogout;
     private javax.swing.JButton jButtonListaDeEventos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanelTelaDeFundo;
+    private javax.swing.JLabel lblNomeMedico;
+    private javax.swing.JLabel lblNotificação;
     // End of variables declaration//GEN-END:variables
 }

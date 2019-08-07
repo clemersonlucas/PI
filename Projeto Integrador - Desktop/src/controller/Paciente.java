@@ -8,7 +8,7 @@ public class Paciente {
     private String nome;
     private String cpf;
     private String senha;
-    private String numeroId;
+    private String numeroIdentidade;
     
     
     private Prontuario prontuario;
@@ -17,7 +17,6 @@ public class Paciente {
     private ArrayList<Consulta> consultas;
     
     public Paciente(String cpf, String senha) {
-        
         this.cpf = "000";
         this.senha = "brigadeiro";
                 
@@ -26,12 +25,17 @@ public class Paciente {
         this.consultas = new ArrayList<>();
     }
 
-    public Paciente(String pathFotoUsuario, String nome, String cpf, String senha, String numeroId, Prontuario prontuario, ArrayList<Historico> historico, ArrayList<Medicamento> remedios, ArrayList<Consulta> consultas) {
+    public Paciente(String pathFotoUsuario, String nome, String cpf, 
+            String senha, String numeroIdentidade, Prontuario prontuario, 
+            ArrayList<Historico> historico, ArrayList<Medicamento> remedios, 
+            ArrayList<Consulta> consultas) {
+
+
         this.pathFotoUsuario = pathFotoUsuario;
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
-        this.numeroId = numeroId;
+        this.numeroIdentidade = numeroIdentidade;
         this.prontuario = prontuario;
         this.historico = historico;
         this.remedios = remedios;
@@ -94,6 +98,24 @@ public class Paciente {
     public void setConsultas(ArrayList<Consulta> consultas) {
         this.consultas = consultas;
     }
+
+    public String getPathFotoUsuario() {
+        return pathFotoUsuario;
+    }
+
+    public void setPathFotoUsuario(String pathFotoUsuario) {
+        this.pathFotoUsuario = pathFotoUsuario;
+    }
+
+    public String getNumeroIdentidade() {
+        return numeroIdentidade;
+    }
+
+    public void setNumeroIdentidade(String numeroIdentidade) {
+        this.numeroIdentidade = numeroIdentidade;
+    }
+    
+    
     
     
     // vamos fazer o objeto da classe apenas comparar
@@ -118,11 +140,4 @@ public class Paciente {
         }
         return true;
     }
-    
-    
-    
-    
-   
-    
-    
 }
