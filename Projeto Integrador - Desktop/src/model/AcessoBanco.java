@@ -1,5 +1,7 @@
 package model;
 
+import controller.Consulta;
+import controller.Funcionario;
 import controller.Medico;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,14 +14,16 @@ import java.util.Scanner;
 
 public class AcessoBanco {
     
-  
     public static Medico medicoLogado;
     
     
     public static final String DELIMITADOR = ":";
     public static final String CAMINHO = "src//model//Banco.txt";
+    public static final String CAMINHO2 = "src//model//Consulta.txt";
 
     public static ArrayList<Medico> banco = new ArrayList<Medico>();
+    public static ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+    
     
     public static void writeDatabase (Medico medico){
         try {
@@ -88,6 +92,45 @@ public class AcessoBanco {
         }
          
         return null;
+    }
+    
+    
+    
+    
+    
+    public static void writeDatabaseConsulta (Consulta consulta){
+        try {
+            FileWriter fileWriter = new FileWriter(CAMINHO2, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            
+            printWriter.println(consulta.getTurno() + DELIMITADOR + consulta.getData()
+            + DELIMITADOR + consulta.getServico());           
+            
+            printWriter.close();
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException ex) {
+        }
+    }
+  
+    
+    public static void readDatabaseConsulta (){
+        try {
+            Scanner leitura = new Scanner(new File (CAMINHO2));
+            consultas.clear();
+            
+            while (leitura.hasNext()){
+                String linha = leitura.nextLine();
+                String vetor [] = linha.split(DELIMITADOR);
+                consultas.add(new Consulta (vetor[0], vetor[1], vetor[2]));
+            }
+            
+            
+            leitura.close();
+        } catch (FileNotFoundException ex) {
+        }
     }
 }
     

@@ -5,16 +5,14 @@ import java.io.Serializable;
 public class Consulta extends Object implements Serializable{
     private String turno;
     private String data;
-    private Funcionario funcionario;
+    private String servico;
     private String estadoConsulta;  
     
-    
-    
     // método construtor parametrizado
-    public Consulta(String turno, String data, Funcionario funcionario) {
+    public Consulta(String turno, String data, String servico) {
         this.turno = turno;
         this.data = data;
-        this.funcionario = funcionario;
+        this.servico = servico;
         this.estadoConsulta = "Avaliando";
     }
     
@@ -22,7 +20,16 @@ public class Consulta extends Object implements Serializable{
     private Consulta(){}
     
     
+    
+    public String getServico() {    
+        return servico;
+    }
+
     //métododos getters e setters
+    public void setServico(String servico) {
+        this.servico = servico;
+    }
+
     public String getTurno() {
         return turno;
     }
@@ -35,12 +42,6 @@ public class Consulta extends Object implements Serializable{
     public void setData(String data) {
         this.data = data;
     }
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
     public String getEstadoConsulta() {
         return estadoConsulta;
     }
@@ -52,7 +53,7 @@ public class Consulta extends Object implements Serializable{
     // método toString
     @Override
     public String toString() {
-        return "Consulta: com o " + funcionario.getProfissao() + 
+        return "Consulta: com o " + servico +  
                 " pela " + turno + " (" + data + ")";
     }
      

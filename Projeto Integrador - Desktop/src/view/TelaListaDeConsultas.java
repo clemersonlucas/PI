@@ -1,24 +1,22 @@
 package view;
 
-import java.awt.Button;
-import javax.swing.JFrame;
-
+import controller.Consulta;
+import javax.swing.DefaultListModel;
+import model.AcessoBanco;
 
 public class TelaListaDeConsultas extends javax.swing.JFrame {
-
-    
-    public static String listData [] = new String[20];
-    
     public TelaListaDeConsultas() {
         initComponents();
+    
+        DefaultListModel lista = new DefaultListModel();
         
-        listData[0] = "Consulta com o dentista (17/10/2019)";
-        listData[1] = "Consulta com o pediatra (01/09/2019)";
-        listData[2] = "Consulta com o nutricionista (22/03/2019)";
-        listData[3] = "Consulta com o ginicologista (13/03/2019)";
+        AcessoBanco.readDatabaseConsulta();
+        for (Consulta colocar : AcessoBanco.consultas){
+             lista.addElement(colocar.toString());
+        }
         
-        jList1.setListData(listData);
-    }
+        jList1.setModel (lista);        
+     }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,12 +52,7 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
         jLabelLogo.setText("jLabel3");
 
         jList1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jList1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jList1.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jList1.setAlignmentX(10.0F);
         jList1.setAlignmentY(10.0F);
@@ -86,9 +79,6 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,8 +87,11 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
                         .addGap(135, 135, 135)
                         .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,10 +131,10 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
-        
+        this.setVisible(false);
+        new TelaAgendarConsulta().setVisible(true);
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
-   
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

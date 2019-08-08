@@ -22,12 +22,12 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanelTelaDeFundo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campoTextoSenha = new javax.swing.JTextField();
         jButtonEntrar = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
         campoTextoCpf = new javax.swing.JTextField();
         lblNotificação = new javax.swing.JLabel();
+        campoTextoSenha = new javax.swing.JPasswordField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,12 +50,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Senha:");
-
-        campoTextoSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoTextoSenhaActionPerformed(evt);
-            }
-        });
 
         jButtonEntrar.setBackground(new java.awt.Color(0, 102, 102));
         jButtonEntrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,6 +82,10 @@ public class TelaLogin extends javax.swing.JFrame {
         lblNotificação.setForeground(new java.awt.Color(255, 0, 51));
         lblNotificação.setText("Tela de Login");
 
+        campoTextoSenha.setText("brigadeiro");
+        campoTextoSenha.setSelectionEnd(215);
+        campoTextoSenha.setSelectionStart(44);
+
         javax.swing.GroupLayout jPanelTelaDeFundoLayout = new javax.swing.GroupLayout(jPanelTelaDeFundo);
         jPanelTelaDeFundo.setLayout(jPanelTelaDeFundoLayout);
         jPanelTelaDeFundoLayout.setHorizontalGroup(
@@ -100,9 +98,9 @@ public class TelaLogin extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoTextoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoTextoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoTextoCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(campoTextoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -126,8 +124,8 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(campoTextoCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoTextoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoTextoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,10 +178,6 @@ public class TelaLogin extends javax.swing.JFrame {
         new TelaCadastro().setVisible(true);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void campoTextoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoTextoSenhaActionPerformed
-
     private void campoTextoCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTextoCpfActionPerformed
@@ -202,7 +196,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoTextoCpf;
-    private javax.swing.JTextField campoTextoSenha;
+    private javax.swing.JPasswordField campoTextoSenha;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JLabel jLabel1;
