@@ -58,7 +58,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonBuscarUsuario.setBackground(new java.awt.Color(0, 102, 102));
         jButtonBuscarUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBuscarUsuario.setText("Buscar Usuário");
+        jButtonBuscarUsuario.setText("Diagnosticos");
         jButtonBuscarUsuario.setPreferredSize(new java.awt.Dimension(137, 23));
         jButtonBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +88,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonEditarProntuario.setBackground(new java.awt.Color(0, 102, 102));
         jButtonEditarProntuario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEditarProntuario.setText("Editar Prontuário");
+        jButtonEditarProntuario.setText("Prontuários");
         jButtonEditarProntuario.setPreferredSize(new java.awt.Dimension(137, 23));
         jButtonEditarProntuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +105,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonEditarFarmacia.setBackground(new java.awt.Color(0, 102, 102));
         jButtonEditarFarmacia.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEditarFarmacia.setText("Farmácia");
+        jButtonEditarFarmacia.setText("Estoque");
         jButtonEditarFarmacia.setPreferredSize(new java.awt.Dimension(137, 23));
         jButtonEditarFarmacia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,9 +207,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private void jButtonConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarConsultaActionPerformed
         this.setVisible(false);
         new TelaListaDeConsultas().setVisible(true);
-        
-        
-        
     }//GEN-LAST:event_jButtonConfirmarConsultaActionPerformed
 
 
@@ -217,7 +214,7 @@ public class TelaInicial extends javax.swing.JFrame {
     // além de poder adicionar novos 
     private void jButtonListaDeEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeEventosActionPerformed
         this.setVisible(false);
-        new TelaEventos().setVisible(true);
+        new TelaListaEventos().setVisible(true);
     }//GEN-LAST:event_jButtonListaDeEventosActionPerformed
 
     
@@ -225,6 +222,7 @@ public class TelaInicial extends javax.swing.JFrame {
     // método para fazer o funcionario ter acesso a um paciente no banco
     private void jButtonBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarUsuarioActionPerformed
         this.setVisible(false);
+        AcessoBanco.irTela = "diagnostico";
         new TelaBuscaUsuario().setVisible(true);
     }//GEN-LAST:event_jButtonBuscarUsuarioActionPerformed
 

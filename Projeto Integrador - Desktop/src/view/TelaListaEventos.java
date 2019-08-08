@@ -1,15 +1,22 @@
 package view;
 
-public class TelaEventos extends javax.swing.JFrame {
-    public static String listData [] = new String[20];
+import controller.Evento;
+import javax.swing.DefaultListModel;
+import model.AcessoBanco;
 
-    public TelaEventos() {
+public class TelaListaEventos extends javax.swing.JFrame {
+    
+    public TelaListaEventos() {
         initComponents();
-        listData[0] = "Eventos no centro (17/10/2019)";
-        listData[1] = "Eventos no conjunto (01/09/2019)";
-        listData[2] = "Eventos no maracujá (22/03/2019)";
+    
+        DefaultListModel lista = new DefaultListModel();
         
-        jList1.setListData(listData);
+        AcessoBanco.readDatabaseEvento();
+        for (Evento colocar : AcessoBanco.eventos){
+             lista.addElement(colocar.toString());
+        }
+        
+        jList1.setModel (lista);    
     }
 
     @SuppressWarnings("unchecked")
@@ -22,6 +29,7 @@ public class TelaEventos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        jButtonAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,24 +58,36 @@ public class TelaEventos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Eventos");
 
+        jButtonAdicionar.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonAdicionar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAdicionar.setText("Adicionar");
+        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelTelaDeFundoLayout = new javax.swing.GroupLayout(jPanelTelaDeFundo);
         jPanelTelaDeFundo.setLayout(jPanelTelaDeFundoLayout);
         jPanelTelaDeFundoLayout.setHorizontalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206))
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))
+                    .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                            .addGap(45, 45, 45)
+                            .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(117, 117, 117)
+                            .addComponent(jLabel1))
+                        .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
@@ -79,8 +99,10 @@ public class TelaEventos extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73))
         );
 
@@ -105,15 +127,22 @@ public class TelaEventos extends javax.swing.JFrame {
         new TelaInicial().setVisible(true);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
+    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+        // vamos porcurar um usuário para adicionar
+        this.setVisible(false);
+        new TelaAdicionarEvento().setVisible(true);
+    }//GEN-LAST:event_jButtonAdicionarActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaEventos().setVisible(true);
+                new TelaListaEventos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;

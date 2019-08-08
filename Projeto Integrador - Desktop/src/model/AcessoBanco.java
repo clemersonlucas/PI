@@ -1,7 +1,7 @@
 package model;
 
 import controller.Consulta;
-import controller.Funcionario;
+import controller.Evento;
 import controller.Medico;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,15 +14,18 @@ import java.util.Scanner;
 
 public class AcessoBanco {
     
+    public static String irTela = "inicial";
     public static Medico medicoLogado;
     
     
     public static final String DELIMITADOR = ":";
     public static final String CAMINHO = "src//model//Banco.txt";
     public static final String CAMINHO2 = "src//model//Consulta.txt";
+    public static final String CAMINHO3 = "src//model//Eventos.txt";
 
     public static ArrayList<Medico> banco = new ArrayList<Medico>();
     public static ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+    public static ArrayList<Evento> eventos = new ArrayList<Evento>();
     
     
     public static void writeDatabase (Medico medico){
@@ -132,5 +135,43 @@ public class AcessoBanco {
         } catch (FileNotFoundException ex) {
         }
     }
+
+
+//################ ADICIONAMOS MÉTODOS PARA CRIAR NOVOS EVENTOS E ETC
+    
+    public static void writeDatabaseEvento (Evento evento){
+        try {
+            FileWriter fileWriter = new FileWriter(CAMINHO3, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            
+            printWriter.println(evento.getDescricao()+ DELIMITADOR + evento.getData());           
+            
+            printWriter.close();
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException ex) {
+        }
+    }
+  
+    
+    public static void readDatabaseEvento (){
+        try {
+            Scanner leitura = new Scanner(new File (CAMINHO3));
+            eventos.clear();
+            
+            while (leitura.hasNext()){
+                String linha = leitura.nextLine();
+                String vetor [] = linha.split(DELIMITADOR);
+                eventos.add(new Evento (vetor[0], vetor[1]));
+            }
+            
+            
+            leitura.close();
+        } catch (FileNotFoundException ex) {
+        }
+    }   
+
 }
     

@@ -1,9 +1,14 @@
 package view;
 
+import model.AcessoBanco;
+
 
 public class TelaBuscaUsuario extends javax.swing.JFrame {
+    // ############ telas possivel para irmos  #############
+    // TelaAgendarConsulta = consulta
+    // TelaDiagnostico = diagnostico    
     
-    private static int proximaTela = 0;
+    
     
     
     public TelaBuscaUsuario() {
@@ -20,7 +25,7 @@ public class TelaBuscaUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldCpfUsuario = new javax.swing.JTextField();
         jButtonBuscarUsuario1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblNotificação = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,40 +56,40 @@ public class TelaBuscaUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Buscar um Usuário");
+        lblNotificação.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lblNotificação.setForeground(new java.awt.Color(255, 0, 51));
+        lblNotificação.setText("Buscar um paciente");
 
         javax.swing.GroupLayout jPanelTelaDeFundoLayout = new javax.swing.GroupLayout(jPanelTelaDeFundo);
         jPanelTelaDeFundo.setLayout(jPanelTelaDeFundoLayout);
         jPanelTelaDeFundoLayout.setHorizontalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButtonBuscarUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(156, 156, 156)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jButtonBuscarUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldCpfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldCpfUsuario)))
-                .addGap(165, 165, 165))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldCpfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -92,7 +97,9 @@ public class TelaBuscaUsuario extends javax.swing.JFrame {
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBuscarUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,17 +120,28 @@ public class TelaBuscaUsuario extends javax.swing.JFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.setVisible(false);
-        new TelaInicial().setVisible(true);
+        if (AcessoBanco.irTela.equals("consulta")){
+            new TelaListaDeConsultas().setVisible(true);
+        }
+        else if (AcessoBanco.irTela.equals("inicial") || 
+                AcessoBanco.irTela.equals("diagnostico")){
+            new TelaInicial().setVisible(true);     
+        }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     
     
     private void jButtonBuscarUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarUsuario1ActionPerformed
         this.setVisible(false);
-        if (proximaTela == 0){
-            new TelaDiagnosticoPaciente().setVisible(true);    
-        } else if (proximaTela == 1){
+
+        if (AcessoBanco.irTela.equals("consulta")){
             new TelaAgendarConsulta().setVisible(true);
+        }
+        else if (AcessoBanco.irTela.equals("diagnostico")){
+            new TelaDiagnosticoPaciente().setVisible(true);
+        }
+        else {
+            new TelaInicial().setVisible(true);
         }
     }//GEN-LAST:event_jButtonBuscarUsuario1ActionPerformed
 
@@ -140,9 +158,9 @@ public class TelaBuscaUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBuscarUsuario1;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanelTelaDeFundo;
     private javax.swing.JTextField jTextFieldCpfUsuario;
+    private javax.swing.JLabel lblNotificação;
     // End of variables declaration//GEN-END:variables
 }

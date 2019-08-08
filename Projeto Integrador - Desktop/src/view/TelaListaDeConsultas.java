@@ -131,8 +131,11 @@ public class TelaListaDeConsultas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+
+        // vamos porcurar um usuário para adicionar
         this.setVisible(false);
-        new TelaAgendarConsulta().setVisible(true);
+        AcessoBanco.irTela = "consulta";
+        new TelaBuscaUsuario().setVisible(true);
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
     public static void main(String args[]) {

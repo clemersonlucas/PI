@@ -1,3 +1,4 @@
 Manhã:01/01/2000:Ginicologista
 Noite:01/01/2000:Pscicologo
 Noite:01/01/2000:Fisioterapelta
+Manhã:01/01/2000:Medico
