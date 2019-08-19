@@ -1,7 +1,6 @@
 package view;
 
 import controller.Paciente;
-import java.sql.Date;
 import java.util.ArrayList;
 import model.AcessoBanco;
 
@@ -9,6 +8,9 @@ import model.AcessoBanco;
 public class TelaCadatroUsuario extends javax.swing.JFrame {
     public TelaCadatroUsuario() {
         initComponents();
+        
+        AcessoBanco.readDatabasePaciente();
+        AcessoBanco.buscarPaciente();
 
         ListaEstados.removeAll();
         ListaEstados.addItem("RN");
@@ -403,8 +405,6 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
             nascimento += jXDatePickerNascimento.getDate().getMonth();
             nascimento += "/";
             nascimento += jXDatePickerNascimento.getDate().getYear();
-            
-            System.err.println("Data nascimento: " + nascimento);
         }
         
         
@@ -416,11 +416,14 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
             orgaoEmissor += jXDatePickerEmissaoRg.getDate().getMonth();
             orgaoEmissor += "/";
             orgaoEmissor += jXDatePickerEmissaoRg.getDate().getYear();
-            
-            System.err.println("Data emissor do rg: " + orgaoEmissor);
         }
         
         else {
+            System.err.println("Data nascimento: " + nascimento);
+            System.err.println("Data emissor do rg: " + orgaoEmissor);
+            
+            
+            
             Paciente paciente = new Paciente(campoTextoCpf.getText(), 
                     "usb." + campoTextoCpf.getText(), campoTextoNome.getText(), 
                     ListaSexo.getItemAt(ListaSexo.getSelectedIndex()), 
