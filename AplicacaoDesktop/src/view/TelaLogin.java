@@ -41,7 +41,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanelTelaDeFundo.setPreferredSize(new java.awt.Dimension(550, 550));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("matricula");
+        jLabel1.setText("Matricula:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Senha:");

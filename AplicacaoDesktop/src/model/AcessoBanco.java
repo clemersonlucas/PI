@@ -106,9 +106,28 @@ public class AcessoBanco {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             PrintWriter printWriter = new PrintWriter(fileWriter);
             
+            //   public Paciente(String cpf, String senha, String nome, String sexo, 
+            //          String etnia, String rg, String dataEmissao, String uf, String orgaoEmissor, 
+            //          String estadoCivil, String anotacoes, String nomePai, String nomeMae, 
+            //          String sus, String foto, String nacionalidade, String naturalidade, 
+            //          String dataNasciento, ArrayList<String> telefones) {
+       
+            
             // vamos escrever no arquivo
-            printWriter.println();
+            printWriter.println(paciente.getCpf() +DELIMITADOR+ paciente.getSenha() 
+                +DELIMITADOR+ paciente.getNome() +DELIMITADOR+ paciente.getSexo() 
+                +DELIMITADOR+ paciente.getEtnia() +DELIMITADOR+ paciente.getRg() 
                     
+                    
+                +DELIMITADOR+ paciente.getDataEmissao() +DELIMITADOR+ paciente.getUf()
+                +DELIMITADOR+ paciente.getOrgaoEmissor() +DELIMITADOR+ paciente.getEstadoCivil()
+                
+                    
+                +DELIMITADOR+ "Anotações" +DELIMITADOR+ paciente.getNomePai()
+                +DELIMITADOR+ paciente.getNomeMae() +DELIMITADOR+ paciente.getSus() 
+                +DELIMITADOR+ "foto *" +DELIMITADOR+ paciente.getNacionalidade() 
+                +DELIMITADOR+ paciente.getNaturalidade() +DELIMITADOR+ paciente.getDataNasciento());
+            
             printWriter.close();
             bufferedWriter.close();
             fileWriter.close();
@@ -125,11 +144,11 @@ public class AcessoBanco {
             while (leitura.hasNext()){
                 String linha = leitura.nextLine();
                 String vetor [] = linha.split(DELIMITADOR);
-            //    pacientes.add(new Funcionario(vetor[0], vetor[1], vetor[2], vetor[3], vetor[4]));
-            
-            
-            
-            
+                
+                pacientes.add(new Paciente (vetor[0], vetor[1], vetor[2], vetor[3], 
+                vetor[4],vetor[5],vetor[6],vetor[7], vetor[8],vetor[9],vetor[10],
+                vetor[11],vetor[12],vetor[13] ,vetor[14] ,vetor[15],vetor[16],vetor[17],
+                new ArrayList<String>()));
             }
             
             
@@ -138,6 +157,20 @@ public class AcessoBanco {
         }
     }    
         
+    
+    // VAMOS BUSCAR OS PACIENTES NO BANCO
+    public static void buscarPaciente (){
+        try {
+            Scanner leitura = new Scanner(new File (CAMINHO_PACIENTE));
+        
+            int i = 0; 
+            for (Paciente p : pacientes){
+                System.err.println(i++);
+            }
+            leitura.close();
+        } catch (FileNotFoundException ex) {
+        }
+    }
     
     
     

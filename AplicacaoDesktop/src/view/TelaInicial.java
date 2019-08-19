@@ -7,6 +7,10 @@ public class TelaInicial extends javax.swing.JFrame {
         initComponents();
         lblEspecialidada.setText(AcessoBanco.funcionario.getFuncao());
         lblNomeMedico.setText(AcessoBanco.funcionario.getNome());
+        
+        
+        AcessoBanco.readDatabasePaciente();
+        AcessoBanco.buscarPaciente();
      }
 
     @SuppressWarnings("unchecked")
