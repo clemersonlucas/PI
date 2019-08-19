@@ -9,7 +9,6 @@ import java.util.Objects;
      *   JA SEJA O SUFICIENTE COMO CHAVE PRIMÁRIA
      */
     
-
 public class Paciente {
     
     // ATRIBUTOS DO PACIENTE    
