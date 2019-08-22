@@ -3,6 +3,16 @@ package view;
 import model.AcessoBanco;
 
 public class TelaInicial extends javax.swing.JFrame {
+
+    public static int irPraUmaTela = 0;
+    
+    /*
+        tela para consultar um determinado paciente : 1
+     
+     */
+    
+    
+
     public TelaInicial() {
         initComponents();
         lblEspecialidada.setText(AcessoBanco.funcionario.getFuncao());
@@ -17,7 +27,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanelTelaDeFundo = new javax.swing.JPanel();
         jButtonConfirmarConsulta = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
-        jButtonListaDeEventos = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
         jButtonBuscarUsuario = new javax.swing.JButton();
         jButtonFazerLogout = new javax.swing.JButton();
         jButtonCadastrarUsuario = new javax.swing.JButton();
@@ -45,13 +55,13 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
         jLabelLogo.setText("jLabel3");
 
-        jButtonListaDeEventos.setBackground(new java.awt.Color(0, 102, 102));
-        jButtonListaDeEventos.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListaDeEventos.setText("Eventos");
-        jButtonListaDeEventos.setPreferredSize(new java.awt.Dimension(137, 23));
-        jButtonListaDeEventos.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultar.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonConsultar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.setPreferredSize(new java.awt.Dimension(137, 23));
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListaDeEventosActionPerformed(evt);
+                jButtonConsultarActionPerformed(evt);
             }
         });
 
@@ -144,7 +154,7 @@ public class TelaInicial extends javax.swing.JFrame {
                                     .addComponent(jButtonEditarFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButtonListaDeEventos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jButtonBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -164,7 +174,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGap(92, 92, 92)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConfirmarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonListaDeEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -197,13 +207,18 @@ public class TelaInicial extends javax.swing.JFrame {
     // vamos fazer com que o funcionário tenha acesso as consultas
     // em que todos os usuários fizeram
     private void jButtonConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarConsultaActionPerformed
+        this.setVisible(false);
+        new TelaListaConsultas().setVisible(true);
     }//GEN-LAST:event_jButtonConfirmarConsultaActionPerformed
 
 
     // método para fazer o usuário tenham acesso a todos os eventos 
     // além de poder adicionar novos 
-    private void jButtonListaDeEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeEventosActionPerformed
-    }//GEN-LAST:event_jButtonListaDeEventosActionPerformed
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        irPraUmaTela = 1;
+        this.setVisible(false);
+        new TelaBuscarPaciente().setVisible(true);       
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
     
     
     // método para fazer o funcionario ter acesso a um paciente no banco
@@ -237,10 +252,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBuscarUsuario;
     private javax.swing.JButton jButtonCadastrarUsuario;
     private javax.swing.JButton jButtonConfirmarConsulta;
+    private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonEditarFarmacia;
     private javax.swing.JButton jButtonEditarProntuario;
     private javax.swing.JButton jButtonFazerLogout;
-    private javax.swing.JButton jButtonListaDeEventos;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanelTelaDeFundo;
     private javax.swing.JLabel lblEspecialidada;

@@ -10,8 +10,7 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
         initComponents();
         
         AcessoBanco.readDatabasePaciente();
-        AcessoBanco.buscarPaciente();
-
+     
         ListaEstados.removeAll();
         ListaEstados.addItem("RN");
         ListaEstados.addItem("CE");
@@ -369,9 +368,82 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public static String pegarMinhaData (String texto){
+        String vetor [] = texto.split(" ");
+        String dataRetorno = "";
+        dataRetorno += vetor[2] + "/";
+        
+        // vamos adquirir o mes aqui
+        switch (vetor[1]){
+            case "Jan":
+                dataRetorno += "01/";
+                break;
+                
+            case "Feb":
+                dataRetorno += "02/";
+                break;
+                
+            case "Mar":
+                dataRetorno += "03/";
+                break;
+                
+            case "Apr":
+                dataRetorno += "04/";
+                break;
+                
+            case "May":
+                dataRetorno += "05/";
+                break;
+                
+            case "Jun":
+                dataRetorno += "06/";
+                break;
+                
+            case "Jul":
+                dataRetorno += "07/";
+                break;
+                
+            case "Aug":
+                dataRetorno += "08/";
+                break;
+                
+            case "Sep":
+                dataRetorno += "09/";
+                break;
+                
+            case "Oct":
+                dataRetorno += "10/";
+                break;
+                
+            case "Nov":
+                dataRetorno += "11/";
+                break;
+                
+            case "Dec":
+                dataRetorno += "12/";
+                break;
+        }
+        
+        dataRetorno += vetor[vetor.length -1];
+        return dataRetorno;
+    }
+    
+    
+    
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // vamos verificar o modelo da data de nascimento
+        if (jXDatePickerNascimento.getDate().getYear() > 2019){
+            lblNotificação.setText("Data nascimento inválido");
+        }
+        
+        // vamos verificar o modelo da data de emissão 
+        else if (jXDatePickerEmissaoRg.getDate().getYear() > 2019){
+            lblNotificação.setText("Data emissão rg inválido");
+        }
+
         // vamos verificar se o nome do usuário esta menor que 5
-        if (campoTextoNome.getText().length() < 5){
+        else if (campoTextoNome.getText().length() < 5){
             lblNotificação.setText("Nome muito curto");
         }
         // vamos verificar o nome do pai
@@ -395,35 +467,13 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
             lblNotificação.setText("RG inválido");
         }
         
-        // vamos verificar o modelo da data de nascimento
-        else if (jXDatePickerNascimento.getDate().getYear() > 2019){
-        }
-        
-        // vamos verificar o modelo da data de emissão 
-        else if (jXDatePickerEmissaoRg.getDate().getYear() > 2019){
-        }
-        
         else {
             // vamos verificar a data de nascimento
             String nascimento = "";
             String orgaoEmissor = "";
-            
-            nascimento += jXDatePickerNascimento.getDate().getMonth();
-            nascimento += "/";
-            nascimento += jXDatePickerNascimento.getDate().getDay();
-            nascimento += "/";
-            nascimento += jXDatePickerNascimento.getDate().getYear();
-
-            orgaoEmissor += jXDatePickerEmissaoRg.getDate().getMonth();            
-            orgaoEmissor += "/";
-            orgaoEmissor += jXDatePickerEmissaoRg.getDate().getDay();
-            orgaoEmissor += "/";
-            orgaoEmissor += jXDatePickerEmissaoRg.getDate().getYear();
-       
-            
-            System.err.println("Data nascimento: " + nascimento);
-            System.err.println("Data emissor do rg: " + orgaoEmissor);
-            
+           
+            nascimento += pegarMinhaData(jXDatePickerNascimento.getDate().toString());
+            orgaoEmissor += pegarMinhaData(jXDatePickerEmissaoRg.getDate().toString());
                 
             Paciente paciente = new Paciente(campoTextoCpf.getText(), 
                     "usb." + campoTextoCpf.getText(), campoTextoNome.getText(), 
@@ -454,6 +504,8 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
         new TelaInicial().setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+            
+            
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

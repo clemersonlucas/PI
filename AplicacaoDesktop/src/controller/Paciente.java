@@ -24,7 +24,7 @@ public class Paciente {
     
     
     // VAMOS DEIXAR A CRIAÇÃO DE PACIENTE PRIVADAS SEM AS INFORMAÇÕES NECESSÁRIAS
-    private Paciente (){}    
+    public Paciente (){}    
     
     /*   OBSERVAÇÕES:
      *   HAVERA UM MÉTODO CONSTRUTOR PARA O PACIENTE DE MENOR
@@ -89,8 +89,7 @@ public class Paciente {
         this.dataNasciento = dataNasciento;
         this.telefones = telefones;
     }
-    
-    
+
     
     // MÉTODOS GETTERS E SETTERS PARA A CLASSE PACIENTE
 

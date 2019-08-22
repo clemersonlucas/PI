@@ -1,5 +1,6 @@
 package model;
 
+import controller.Consulta;
 import controller.Funcionario;
 import controller.Paciente;
 import java.io.BufferedWriter;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 
 public class AcessoBanco {
     
+    
     public static Funcionario funcionario = new Funcionario("", "");
     public static final String DELIMITADOR = ":";
    
@@ -23,6 +25,79 @@ public class AcessoBanco {
     
     public static ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
     public static final String CAMINHO_FUNCIONARIO = "src//model//Funcionarios.txt";
+    
+    public static ArrayList<Consulta> consultas = new ArrayList<>();
+    public static final String CAMINHO_CONSULTAS = "src//model//Consultas.txt";
+ 
+    
+    public static void writeDatabaseConsulta (Consulta consulta){
+        try {
+            FileWriter fileWriter = new FileWriter(CAMINHO_CONSULTAS, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            
+            // vamos escrever no arquivo
+            printWriter.println(
+                          consulta.getId() 
+            +DELIMITADOR+ consulta.getDescricao() +DELIMITADOR+ consulta.getDiagnostico() 
+            +DELIMITADOR+ consulta.getStatus()
+            +DELIMITADOR+ consulta.getEntrada() +DELIMITADOR+ consulta.getFim() 
+            +DELIMITADOR+ consulta.getComeco() +DELIMITADOR+ consulta.getEspecializacao()
+            +DELIMITADOR+ consulta.getDataMarcada());
+                    
+            printWriter.close();
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException ex) {
+        }
+    }
+    public static String novoIdConsultas() {
+        try {
+            Scanner leitura = new Scanner(new File (CAMINHO_CONSULTAS));
+            ArrayList<String> idExistente = new ArrayList<>();
+               
+            while (leitura.hasNext()){
+                String linha = leitura.nextLine();
+                String vetor [] = linha.split(DELIMITADOR);
+                idExistente.add (vetor[0]);
+            }
+            
+            while (true){
+                boolean achou = false;
+                int matriculaGerada = (int) (Math.random()*100000);
+                String retorno = Integer.toString(matriculaGerada);
+            
+                for (String s : idExistente){
+                    if (s.equalsIgnoreCase(retorno)){
+                        achou = true;
+                    }
+                }
+                
+                if (achou == false && retorno.length() == 5){
+                    return retorno;
+                }
+            }
+            } catch (FileNotFoundException ex) {
+        }
+        return null;
+    }
+    public static void readDatabaseConsultas (){
+        try {
+            Scanner leitura = new Scanner(new File (CAMINHO_CONSULTAS));
+            consultas.clear();
+            
+            while (leitura.hasNext()){
+                String linha = leitura.nextLine();
+                String vetor [] = linha.split(DELIMITADOR);
+                
+                consultas.add(new Consulta(vetor[0], vetor[1], vetor[2], vetor[3], 
+                vetor[4], vetor[5], vetor[6], vetor[7], vetor[8]));
+            }
+            leitura.close();
+        } catch (FileNotFoundException ex) {
+        }
+    }    
+    
     
     
     public static void writeDatabaseFuncionario (Funcionario funcionario){
