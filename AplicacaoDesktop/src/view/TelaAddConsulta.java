@@ -20,7 +20,7 @@ public class TelaAddConsulta extends javax.swing.JFrame {
         
         
         id = AcessoBanco.novaMatricula();        
-        lblMatricula.setText("Matricula: " + id);
+        lblMatricula.setText("identificação: " + id);
         
     }
 
@@ -34,11 +34,11 @@ public class TelaAddConsulta extends javax.swing.JFrame {
         lblNotificação = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnAdicionarConsulta = new javax.swing.JButton();
-        dataAgendada = new org.jdesktop.swingx.JXDatePicker();
         jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         listaEspecializacoes = new javax.swing.JComboBox<>();
         lblMatricula = new javax.swing.JLabel();
+        dataAgendada = new org.jdesktop.swingx.JXDatePicker();
 
         jLabel1.setText("jLabel1");
 
@@ -65,7 +65,7 @@ public class TelaAddConsulta extends javax.swing.JFrame {
 
         btnAdicionarConsulta.setBackground(new java.awt.Color(0, 102, 102));
         btnAdicionarConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdicionarConsulta.setText("Add Consulta");
+        btnAdicionarConsulta.setText("Adicionar");
         btnAdicionarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarConsultaActionPerformed(evt);
@@ -89,8 +89,6 @@ public class TelaAddConsulta extends javax.swing.JFrame {
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(listaEspecializacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataAgendada, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
                             .addGap(45, 45, 45)
@@ -105,12 +103,14 @@ public class TelaAddConsulta extends javax.swing.JFrame {
                                     .addGap(157, 157, 157)
                                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnAdicionarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                            .addGap(141, 141, 141)
-                            .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel14)))))
+                                    .addComponent(btnAdicionarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dataAgendada, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listaEspecializacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel14))))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
@@ -125,13 +125,13 @@ public class TelaAddConsulta extends javax.swing.JFrame {
                         .addComponent(lblMatricula)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listaEspecializacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dataAgendada, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dataAgendada, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))

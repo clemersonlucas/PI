@@ -143,6 +143,12 @@ public class TelaBuscarPaciente extends javax.swing.JFrame {
                 this.setVisible(false);
                 new TelaCosultarPaciente().setVisible(true);
             }    
+            else if (TelaInicial.irPraUmaTela == 2) {
+                this.setVisible(false);
+                new TelaAddConsulta().setVisible(true);
+            }    
+            
+            
         }
         
         else if (tentativas++ != 0 && tentativas % 5 == 0) {
@@ -156,7 +162,20 @@ public class TelaBuscarPaciente extends javax.swing.JFrame {
     
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
-        new TelaInicial().setVisible(true);
+        
+
+        // ir para tela de consultar um paciente
+        if (TelaInicial.irPraUmaTela == 1) {
+            this.setVisible(false);
+            new TelaInicial().setVisible(true);
+        }    
+        else if (TelaInicial.irPraUmaTela == 2) {
+            this.setVisible(false);
+            new TelaListaConsultas().setVisible(true);
+    }    
+
+        
+        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void campoTextoBuscaCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoBuscaCpfActionPerformed

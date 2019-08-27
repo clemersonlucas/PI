@@ -102,8 +102,14 @@ public class Consulta {
         this.dataMarcada = dataMarcada;
     }
 
+    public String detalhes (){
+        return "A consulta foi marcada para o dia " + dataMarcada 
+                + " onde é solicitado um " + especializacao;
+    }
+    
+    
     @Override
     public String toString() {
-        return "Consulta com " + this.especializacao + " às " + this.dataMarcada;
+        return id + ": Marcado com o " + this.especializacao;
     }
 }

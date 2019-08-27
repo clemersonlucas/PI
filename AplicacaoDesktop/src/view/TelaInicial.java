@@ -8,7 +8,7 @@ public class TelaInicial extends javax.swing.JFrame {
     
     /*
         tela para consultar um determinado paciente : 1
-     
+        tela para agendar uma consulta 2     
      */
     
     
@@ -207,6 +207,7 @@ public class TelaInicial extends javax.swing.JFrame {
     // vamos fazer com que o funcionário tenha acesso as consultas
     // em que todos os usuários fizeram
     private void jButtonConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarConsultaActionPerformed
+        irPraUmaTela = 2;
         this.setVisible(false);
         new TelaListaConsultas().setVisible(true);
     }//GEN-LAST:event_jButtonConfirmarConsultaActionPerformed

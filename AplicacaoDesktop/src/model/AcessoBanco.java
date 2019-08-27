@@ -246,6 +246,25 @@ public class AcessoBanco {
         } catch (FileNotFoundException ex) {
         }
     }
+
+    public static Consulta encontrarConsulta(String id) {
+        try {
+            Scanner leitura = new Scanner(new File (CAMINHO_CONSULTAS));
+            
+            while (leitura.hasNext()){
+                String linha = leitura.nextLine();
+                String vetor [] = linha.split(DELIMITADOR);
+                
+                if (vetor[0].equalsIgnoreCase(id)){
+                    return new Consulta(vetor[0], vetor[1], vetor[2], vetor[3], 
+                            vetor[4], vetor[5], vetor[6], vetor[7], vetor[8]);
+                }
+            }
+        } catch (FileNotFoundException ex) {
+        }
+        return null;
+    
+    }
     
     
     
