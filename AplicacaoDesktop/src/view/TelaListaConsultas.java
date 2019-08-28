@@ -38,9 +38,6 @@ public class TelaListaConsultas extends javax.swing.JFrame {
                 }
             }
         });
-    
-   
-                
     }
     
     
@@ -244,12 +241,10 @@ public class TelaListaConsultas extends javax.swing.JFrame {
     
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
-        new TelaInicial().setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAdicionarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarConsultaActionPerformed
         this.setVisible(false);
-  //    new TelaAddConsulta().setVisible(true);
         new TelaBuscarPaciente().setVisible(true);
     }//GEN-LAST:event_btnAdicionarConsultaActionPerformed
 

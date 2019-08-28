@@ -8,7 +8,8 @@ public class TelaInicial extends javax.swing.JFrame {
     
     /*
         tela para consultar um determinado paciente : 1
-        tela para agendar uma consulta 2     
+        tela para agendar uma consulta 2
+        tela para o prontuário do paciente 3
      */
     
     
@@ -43,6 +44,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanelTelaDeFundo.setPreferredSize(new java.awt.Dimension(550, 450));
 
         jButtonConfirmarConsulta.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonConfirmarConsulta.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButtonConfirmarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         jButtonConfirmarConsulta.setText("Consultas");
         jButtonConfirmarConsulta.setPreferredSize(new java.awt.Dimension(127, 23));
@@ -56,6 +58,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabelLogo.setText("jLabel3");
 
         jButtonConsultar.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonConsultar.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButtonConsultar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonConsultar.setText("Consultar");
         jButtonConsultar.setPreferredSize(new java.awt.Dimension(137, 23));
@@ -66,6 +69,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         jButtonBuscarUsuario.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonBuscarUsuario.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButtonBuscarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBuscarUsuario.setText("Diagnosticos");
         jButtonBuscarUsuario.setPreferredSize(new java.awt.Dimension(137, 23));
@@ -76,6 +80,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         jButtonFazerLogout.setBackground(new java.awt.Color(153, 0, 51));
+        jButtonFazerLogout.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButtonFazerLogout.setForeground(new java.awt.Color(255, 255, 255));
         jButtonFazerLogout.setText("Sair");
         jButtonFazerLogout.setPreferredSize(new java.awt.Dimension(137, 23));
@@ -86,6 +91,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         jButtonCadastrarUsuario.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonCadastrarUsuario.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButtonCadastrarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCadastrarUsuario.setText("Cadastrar");
         jButtonCadastrarUsuario.setPreferredSize(new java.awt.Dimension(127, 23));
@@ -96,6 +102,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         jButtonEditarProntuario.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonEditarProntuario.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButtonEditarProntuario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEditarProntuario.setText("Prontuários");
         jButtonEditarProntuario.setPreferredSize(new java.awt.Dimension(137, 23));
@@ -105,12 +112,14 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        lblEspecialidada.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblEspecialidada.setText("Medico Geral");
 
-        lblNomeMedico.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblNomeMedico.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblNomeMedico.setText("Caio César");
 
         jButtonEditarFarmacia.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonEditarFarmacia.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jButtonEditarFarmacia.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEditarFarmacia.setText("Estoque");
         jButtonEditarFarmacia.setPreferredSize(new java.awt.Dimension(137, 23));
@@ -132,32 +141,28 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonConfirmarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonEditarProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEditarFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonFazerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(270, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
                         .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(158, 158, 158)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblEspecialidada)
-                            .addComponent(lblNomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                            .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonFazerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTelaDeFundoLayout.createSequentialGroup()
-                            .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButtonCadastrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonConfirmarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaDeFundoLayout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(jButtonEditarProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButtonEditarFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButtonBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                            .addComponent(lblNomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(292, 292, 292))))
         );
         jPanelTelaDeFundoLayout.setVerticalGroup(
             jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,21 +176,24 @@ public class TelaInicial extends javax.swing.JFrame {
                         .addComponent(lblEspecialidada)
                         .addGap(18, 18, 18)
                         .addComponent(lblNomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(92, 92, 92)
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonConfirmarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEditarProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEditarFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82)
-                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonFazerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(384, 384, 384)
+                        .addComponent(lblNotificação, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTelaDeFundoLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonConfirmarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEditarProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEditarFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(jButtonFazerLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,12 +201,12 @@ public class TelaInicial extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelTelaDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         pack();
@@ -208,7 +216,6 @@ public class TelaInicial extends javax.swing.JFrame {
     // em que todos os usuários fizeram
     private void jButtonConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarConsultaActionPerformed
         irPraUmaTela = 2;
-        this.setVisible(false);
         new TelaListaConsultas().setVisible(true);
     }//GEN-LAST:event_jButtonConfirmarConsultaActionPerformed
 
@@ -217,7 +224,6 @@ public class TelaInicial extends javax.swing.JFrame {
     // além de poder adicionar novos 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         irPraUmaTela = 1;
-        this.setVisible(false);
         new TelaBuscarPaciente().setVisible(true);       
     }//GEN-LAST:event_jButtonConsultarActionPerformed
     
@@ -234,10 +240,17 @@ public class TelaInicial extends javax.swing.JFrame {
         this.setVisible(false);
         new TelaCadatroUsuario().setVisible(true);
     }//GEN-LAST:event_jButtonCadastrarUsuarioActionPerformed
+
+    // vamos pegar o prontuário do Paciente aqui
     private void jButtonEditarProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarProntuarioActionPerformed
+        irPraUmaTela = 3;
+        new TelaBuscarPaciente().setVisible(true);
     }//GEN-LAST:event_jButtonEditarProntuarioActionPerformed
- 
+
+    
+    // vamos para a tela de estoque
     private void jButtonEditarFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFarmaciaActionPerformed
+        new TelaEstoque().setVisible(true);
     }//GEN-LAST:event_jButtonEditarFarmaciaActionPerformed
 
     
