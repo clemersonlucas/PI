@@ -1,4 +1,5 @@
-package com.conexao.br;
+package model;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +9,7 @@ import java.sql.Statement;
 
 public class Conexao {
     
-    public static void main(String[] args) {
+    public static String conectar () {
         try {
             Class.forName("com.mysql.jdbc.driver");       
             Connection connection = DriverManager.
@@ -25,9 +26,12 @@ public class Conexao {
             resultSet.close();
             statement.close();
             connection.close();
-
+            
+            return "Conexão estabelecida";
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
         }
+        
+        return "Servidor indisponivel";
     }
 }
