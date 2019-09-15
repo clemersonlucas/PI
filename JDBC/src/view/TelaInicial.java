@@ -3,6 +3,7 @@ package view;
 import model.Conexao;
 
 public class TelaInicial extends javax.swing.JFrame {
+
     public TelaInicial() {
         initComponents();
     }
@@ -83,10 +84,15 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (campoMatricula.getText().length() != 14){
-            lblNotificacao.setText("Matricula Inválida");
-        }else {
-            lblNotificacao.setText(Conexao.conectar());
+
+        String resultado = Conexao.conectar(campoMatricula.getText());
+        
+        if (resultado.equalsIgnoreCase("connection")){
+            this.setVisible(false);
+            new TelaAluno().setVisible(true);
+        }
+        else {
+            lblNotificacao.setText(resultado);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
