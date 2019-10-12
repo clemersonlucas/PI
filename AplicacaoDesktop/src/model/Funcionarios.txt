@@ -1,7 +1,0 @@
-12345:Clemerson Lucas:pamonha:Médico Geral:Acesso Simples
-53184:Caio cesar:maricona:Ginicologista:Acesso Simples
-26027:Caio César:pastel:Pediatra:Acesso Médico
-97472:Caio César Penha:brigadeiro:Fisioterapelta:Acesso Médico
-48823:Caio César Penha:brigadeiro:Fisioterapelta:Acesso Médico
-41286:Caio César Penha:brigadeiro:Fisioterapelta:Acesso Médico
-56051:Caio César Penha:brigadeiro:Fisioterapelta:Acesso Médico
