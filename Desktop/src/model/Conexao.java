@@ -4,7 +4,6 @@ import controller.Consulta;
 import controller.Estoque;
 import controller.Evento;
 import controller.Funcionario;
-import controller.Medicamento;
 import controller.Paciente;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -71,91 +70,9 @@ public class Conexao {
         return listaRetorno;
     }
     
-    // método responsável por cadastrar um funcionario no banco
-    public static void cadastraFuncionario (String nome, String tipoAcesso, String funcao, 
-            String senha, String matricula) throws SQLException{
-        
-        String sql = "INSERT INTO Profissional VALUES ('" + nome + "','" + tipoAcesso + "','" + funcao + "','" 
-                + senha + "','" + matricula + "');";
-        fazerConexao(sql);
-        
-        statement.close();
-        connection.close();
-    }
-    
-    // método responsável por adicionar um paciente no banco
-    public static void adicionaPaciente(Paciente paciente) {
-        String sql = "INSERT INTO Paciente VALUES ('" + paciente.getSexo() + "','" + paciente.getEtinia() + "','"
-                + paciente.getSenha() + "','" + paciente.getEstadoCivil() + "','" + paciente.getRg() + "','"
-                + paciente.getOrgaoEmissor() + "','" + paciente.getDataExpedicao() + "','" + paciente.getUf() + "','"
-                + "" + "','" + paciente.getNomePai()+ "','" + paciente.getNomeMae() + "','" + paciente.getNome() + "','"
-                + paciente.getSus() + "','" + "" + "','" + paciente.getNacionalidade() + "','" + paciente.getNaturalidade() + "','"
-                + paciente.getNascimento() + "','" + paciente.getCpf() + "');";
-                
-        fazerConexao(sql);
-    
-        try {
-            statement.close();
-            connection.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
       
     // método responsável por realizar o login com o usuário
-    public static Funcionario fazerLogin (String matricula, String senha) throws SQLException{
-        String sql = "SELECT * FROM Profissional;";
-        
-        fazerConexao(sql);
-        
-        while (resultSet.next()){
-             String s = resultSet.getString("senha");
-             String m = resultSet.getString("matricula");
-
-             if (s.equals(senha) && m.equals(matricula)){
-                 Funcionario funcionario = new Funcionario(resultSet.getString("nome"), 
-                     senha, matricula, resultSet.getString("tipoAcesso"), resultSet.getString("funcao"));
-
-                 return funcionario;
-             }
-        }
-
-        resultSet.close();
-        statement.close();
-        connection.close();
-           
-        return null;
-    }
     
-    // cria uma nova matricula tendo base as ja existentes
-    public static String novaMatricula () throws SQLException{
-        String sql = "SELECT * FROM Profissional;"; 
-        fazerConexao(sql);
-        
-        boolean sairLoop = true;
-        while (sairLoop == true){
-            String novaMatricula = Integer.toString((int)(Math.random() * 100000));
-            if (novaMatricula.length() == 5){
-                while (resultSet.next()){
-                    String m = resultSet.getString("matricula");
-
-                    if (novaMatricula.equals(m)){
-                        break;
-                    }
-                }  
-
-                if (sairLoop == true){
-                    return novaMatricula;
-                }
-            }
-        }
-        resultSet.close();
-        statement.close();
-        connection.close();
-
-        return null;
-    }
-
    
     // método responsável por deletar um evento ja existente    
     public static void deletarEvento (int id) throws SQLException{
@@ -166,162 +83,9 @@ public class Conexao {
         connection.close();
     } 
     
-    // método responsável por adicionar um novo evento
-    public static void adicionaEvento (Evento evento) throws SQLException{
-        String sql = "INSERT INTO Evento VALUES ('"
-                + evento.getTitulo() + "','"
-                + evento.getInformacao() + "','" 
-                + evento.getDataPublicao() + "','"
-                + evento.getDataExpirar() + "','"
-                + evento.getId() + "','"
-                + evento.getMatriculaProfissional() +
-                "');";
-                
-        fazerConexao(sql);
-        
-        statement.close();
-        connection.close();
-    } 
-
-    // cria uma nova matricula tendo base as ja existentes
-    public static String novoIdMedicamento (){
-        try {
-            String sql = "SELECT * FROM Medicamento;";
-            fazerConexao(sql);
-            
-            boolean sairLoop = true;
-            while (sairLoop == true){
-                String novaMatricula = Integer.toString((int)(Math.random() * 100000));
-                if (novaMatricula.length() == 5){
-                    try {
-                        while (resultSet.next()){
-                            String m = resultSet.getString("id");
-                            
-                            if (novaMatricula.equals(m)){
-                                break;
-                            }
-                        }
-                    } catch (SQLException ex) {
-                        System.err.println(ex.getMessage());
-                    }
-                    
-                    if (sairLoop == true){
-                        return novaMatricula;
-                    }
-                }
-            }
-            resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-
-        return null;
-    }
-        
-    // método responsável por criar um novo id para  
-    public static int novoIdEvento () throws SQLException{
-        String sql = "SELECT * FROM Evento;"; 
-        fazerConexao(sql);
-        
-        boolean sairLoop = true;
-        while (sairLoop == true){
-            String novaMatricula = Integer.toString((int)(Math.random() * 100000));
-            if (novaMatricula.length() == 5){
-                while (resultSet.next()){
-                    String m = resultSet.getString("id");
-
-                    if (novaMatricula.equals(m)){
-                        break;
-                    }
-                }  
-
-                if (sairLoop == true){
-                    return Integer.parseInt(novaMatricula);
-                }
-            }
-        }
-        resultSet.close();
-        statement.close();
-        connection.close();
-
-        return 0;
-    }    
-
-    // método responsável por criar um novo id para  
-    public static int novoIdConsulta () throws SQLException{
-        String sql = "SELECT * FROM Consulta;"; 
-        fazerConexao(sql);
-        
-        boolean sairLoop = true;
-        while (sairLoop == true){
-            String novaMatricula = Integer.toString((int)(Math.random() * 100000));
-            if (novaMatricula.length() == 5){
-                while (resultSet.next()){
-                    String m = resultSet.getString("id");
-
-                    if (novaMatricula.equals(m)){
-                        break;
-                    }
-                }  
-
-                if (sairLoop == true){
-                    return Integer.parseInt(novaMatricula);
-                }
-            }
-        }
-        resultSet.close();
-        statement.close();
-        connection.close();
-
-        return 0;
-    }    
     
-    // verifica se o cpf ja esta no banco
-    public static boolean verificaCpf (String cpf){
-        fazerConexao("SELECT * FROM Paciente");
     
-        try {
-            while (resultSet.next()){
-                String cpfExiste = resultSet.getString("cpf");
-                if (cpfExiste.equals(cpf)){
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        
-        return false;
-    }
     
-    // método responsável por adicionar uma consulta ao banco 
-    public static void adicionaConsulta (Consulta consulta){
-        String sql = "INSERT INTO Consulta VALUES ('" + consulta.getData()
-                + "','"  + consulta.getDescricao()
-                + "','"  + consulta.getDiagnostico()
-                + "','"  + consulta.getHora()
-                + "','"  + consulta.getStatus()
-                + "','"  + consulta.getInicioConsulta()
-                + "','"  + consulta.getFimConsulta()
-                + "','"  + consulta.getEntrada()
-                + "','"  + consulta.getEspecialidade()
-                + "','"  + consulta.getId()
-                + "','"  + consulta.getQuemAgendou()
-                + "','"  + consulta.getParaPaciente()
-                + "');";
-     
-        fazerConexao(sql);
-        
-        try {
-            statement.close();
-            connection.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
-
     // método responsável por pegar todas as consultas agendadas
     public static ArrayList<Consulta> pegarTodasConsultas() {
         String sql = "SELECT * FROM Consulta";
@@ -525,40 +289,5 @@ public class Conexao {
             System.err.println(ex.getMessage());
         }
     }
-    
-    // método responsável por adicionar um médicamento no estoque
-    public static void adicionaMedicamentoEstoque (Estoque estoque){
-        String sql = "INSERT INTO Estoque VALUES ('" + estoque.getNome() + "','" +
-                estoque.getValidade() + "','" + estoque.getQuantidade() + "','" +
-                estoque.getDescricao() + "','" + estoque.getFabricacao() + "','" + 
-                estoque.getId() + "','" + estoque.getMatriculaProfissional() + "');";
-    
-        fazerConexao(sql);
-        
-        try {
-            statement.close();
-            connection.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
-    
-    // método responsável por adicionar um médicamento no estoque
-    public static void preescreverMedicamento (Medicamento medicamento){
-        String sql = "INSERT INTO Medicamento VALUES ('" + medicamento.getNome() + "','" +
-                medicamento.getDataFinal()+ "','" + medicamento.getDataInicial()+ "','" +
-                medicamento.getIntervaloHoras() + "','" + medicamento.getId() + "','" + 
-                medicamento.getCpfPaciente() + "','" + medicamento.getMatriculaProfissional() + "');";
-    
-        fazerConexao(sql);
-        
-        try {
-            statement.close();
-            connection.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
-    
     
 }

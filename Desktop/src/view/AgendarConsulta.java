@@ -2,19 +2,16 @@ package view;
 
 import controller.Consulta;
 import controller.Funcionario;
-import java.sql.SQLException;
+import model.AcessoBanco;
 import model.Conexao;
 
 public class AgendarConsulta extends javax.swing.JFrame {
 
     public AgendarConsulta() {
         initComponents();
-        
         this.setTitle("Agende uma consulta");
         this.setLocationRelativeTo(this); 
-        
-        
-        
+
         ListaTipoFuncao.removeAll();
         ListaTipoFuncao.removeAllItems();
         ListaTipoFuncao.addItem("Pediatra");
@@ -144,41 +141,33 @@ public class AgendarConsulta extends javax.swing.JFrame {
     private void btnAdicionarEvento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarEvento2ActionPerformed
         String cpfPaciente = campoTextoCpfPaciente.getText();
         
-        if (!(Conexao.verificaCpf(cpfPaciente))){
+        if (!(AcessoBanco.cpfJaExiste(cpfPaciente))){
             javax.swing.JOptionPane.showMessageDialog(null, "Usuário inexistente!");
         }
         else {
-            try {
-                String data = AdicionarEvento.pegarMinhaData(cldData.getDate().toString());
-                String descricao = "";
-                String diagnostico = "";
-                String hora = "00:00:00";
-                String status = "Aguardando avaliação";
+            String data = AdicionarEvento.pegarMinhaData(cldData.getDate().toString());
+            String descricao = "";
+            String diagnostico = "";
+            String hora = "00:00:00";
+            String status = "Aguardando avaliação";
 
-                // data de DATETIME
-                String incioConsulta = "00:00:00";
-                String fimConsulta = "00:00:00";
-                String entrada = "00:00:00";
+            // data de DATETIME
+            String incioConsulta = "00:00:00";
+            String fimConsulta = "00:00:00";
+            String entrada = "00:00:00";
 
-                String especialidade = ListaTipoFuncao.getItemAt(ListaTipoFuncao.getSelectedIndex());
-                int id = Conexao.novoIdConsulta();
+            String especialidade = ListaTipoFuncao.getItemAt(ListaTipoFuncao.getSelectedIndex());
+            int id = AcessoBanco.novoIdConsulta();
+            String matriculaProfissional = Funcionario.funcionario.getMatricula();
 
-                String matriculaProfissional = Funcionario.funcionario.getMatricula();
+            Consulta consulta = new Consulta(data, diagnostico, hora, descricao, status, 
+                    incioConsulta, fimConsulta, entrada, especialidade, id, matriculaProfissional, cpfPaciente);
 
-                Consulta consulta = new Consulta(data, diagnostico, hora, descricao, status, 
-                        incioConsulta, fimConsulta, entrada, especialidade, id, matriculaProfissional, cpfPaciente);
-
-                // vamos adicionar a consulta no banco de dados
-                Conexao.adicionaConsulta(consulta);
-                javax.swing.JOptionPane.showMessageDialog(null, "Consulta agendada com sucesso!");
-                
-                this.dispose();
-                new InicialMedico().setVisible(true);
-
-
-            } catch (SQLException ex) {
-                System.err.println(ex.getMessage());
-            }
+            // vamos adicionar a consulta no banco de dados
+            AcessoBanco.adicionaConsulta(consulta);
+            javax.swing.JOptionPane.showMessageDialog(null, "Consulta agendada com sucesso!");
+            this.dispose();
+            new InicialMedico().setVisible(true);
         }
     }//GEN-LAST:event_btnAdicionarEvento2ActionPerformed
 

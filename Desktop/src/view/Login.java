@@ -4,6 +4,7 @@ import controller.Funcionario;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.AcessoBanco;
 import model.Conexao;
 
 public class Login extends javax.swing.JFrame {
@@ -25,9 +26,9 @@ public class Login extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         campoMatricula = new javax.swing.JTextField();
         campoSenha = new javax.swing.JPasswordField();
+        lblNotificacao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 600));
 
         PlanoDeFundo.setBackground(new java.awt.Color(255, 255, 255));
         PlanoDeFundo.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -60,6 +61,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        lblNotificacao.setBackground(new java.awt.Color(255, 255, 255));
+        lblNotificacao.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout PlanoDeFundoLayout = new javax.swing.GroupLayout(PlanoDeFundo);
         PlanoDeFundo.setLayout(PlanoDeFundoLayout);
         PlanoDeFundoLayout.setHorizontalGroup(
@@ -77,6 +81,10 @@ public class Login extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(151, 151, 151))
+            .addGroup(PlanoDeFundoLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(lblNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PlanoDeFundoLayout.setVerticalGroup(
             PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +101,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(264, 264, 264))
+                .addGap(98, 98, 98)
+                .addComponent(lblNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,33 +126,30 @@ public class Login extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         boolean alerta = false;
         
+        String senha = campoSenha.getText();
+        String matricula = campoMatricula.getText();
+        Funcionario funcionario = AcessoBanco.fazerLogin(matricula, senha);
         
-        try {
-            Funcionario f = Conexao.fazerLogin(campoMatricula.getText(), campoSenha.getText());
-            if (f != null){
-                Funcionario.funcionario = f;
-                this.dispose();
-            
-                // Vamos verificar o tipo de acesso do funcionário
-                if (Funcionario.funcionario.getTipoAcesso().equals("Acesso Médico")){
-                    //System.err.println("Acesso Médico");
-                    alerta = true;
-                    new InicialMedico ().setVisible(true);
-                }
-                else {
-                    alerta = true;
-                    //System.err.println("Acesso Padrão");
-                }
+        
+        if (funcionario != null){
+            Funcionario.funcionario = funcionario;
+            this.dispose();
+        
+            // Vamos verificar o tipo de acesso do funcionário
+            if (Funcionario.funcionario.getTipoAcesso().equals("Acesso Médico")){
+                //System.err.println("Acesso Médico");
+                alerta = true;
+                new InicialMedico ().setVisible(true);
+            }
+            else {
+                alerta = true;
+                //System.err.println("Acesso Padrão");
             }
         }
-        catch (NullPointerException e){
-            System.err.println(e.getMessage());
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
+        
         
         if (alerta == false){
-            System.err.println(" VOCÊ NÃO ESTA CADASTRADO");
+            lblNotificacao.setText("Você não está cadastrado");
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -167,5 +174,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblNotificacao;
     // End of variables declaration//GEN-END:variables
 }

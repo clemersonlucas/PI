@@ -2,6 +2,7 @@ package view;
 
 import controller.Funcionario;
 import controller.Medicamento;
+import model.AcessoBanco;
 import model.Conexao;
 
 public class ReceitarMedicamento extends javax.swing.JFrame {
@@ -221,7 +222,7 @@ public class ReceitarMedicamento extends javax.swing.JFrame {
         
         int intervaloHoras = (int) spinnerQuantidade.getValue();
         String nomeMedicamento = campoTextoNome.getText();
-        String idMedicamento = Conexao.novoIdMedicamento();
+        String idMedicamento = AcessoBanco.novoIdMedicamento();//Conexao.novoIdMedicamento();
         
         
         if (nomePaciente == null){
@@ -236,7 +237,7 @@ public class ReceitarMedicamento extends javax.swing.JFrame {
         else{
             Medicamento medicamento = new Medicamento(nomeMedicamento, inicialTratamento, fimTratamento, intervaloHoras, 
                     idMedicamento, campoTextoCpf.getText(), matriculaProfissional);
-            Conexao.preescreverMedicamento(medicamento);
+            AcessoBanco.preescreverMedicamento(medicamento);
             javax.swing.JOptionPane.showMessageDialog(null, "Medicação solicitada!");
             this.setVisible(false);
         }

@@ -35,7 +35,7 @@ public class InicialMedico extends javax.swing.JFrame {
         lblNome.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         lblNome.setText("Médico: Caio cesar");
 
-        btnEventos.setBackground(new java.awt.Color(40, 166, 166));
+        btnEventos.setBackground(new java.awt.Color(255, 0, 0));
         btnEventos.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         btnEventos.setForeground(new java.awt.Color(254, 254, 254));
         btnEventos.setText("Eventos");
@@ -203,11 +203,9 @@ public class InicialMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    
-    
     private void btnEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventosActionPerformed
-        this.dispose();
-        new ListaEventos().setVisible(true);
+//        this.dispose();
+//        new ListaEventos().setVisible(true);
     }//GEN-LAST:event_btnEventosActionPerformed
 
     private void btnSairDaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairDaContaActionPerformed

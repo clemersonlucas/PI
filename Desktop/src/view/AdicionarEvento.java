@@ -2,8 +2,7 @@ package view;
 
 import controller.Evento;
 import controller.Funcionario;
-import java.sql.SQLException;
-import model.Conexao;
+import model.AcessoBanco;
 
 public class AdicionarEvento extends javax.swing.JFrame {
     public AdicionarEvento() {
@@ -145,26 +144,21 @@ public class AdicionarEvento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarEventoActionPerformed
-        try {
-            int id = Conexao.novoIdEvento();
-            String titulo = campoTextoTitulo.getText();
-            String informacoes = campoTextoInformacoes.getText();
-            String dataPublicacao = pegarMinhaData(cldDataPublicacao.getDate().toString());
-            String dataExpiracao = pegarMinhaData(cldDataExpiracao.getDate().toString());
-            
-            // vamos pegar a matricula do médico logado
-            String matriculaProfissional = Funcionario.funcionario.getMatricula();
-            Evento e = new Evento(titulo, dataPublicacao, dataExpiracao, informacoes, matriculaProfissional, id);
-            
-            //vamos salvar o evento no banco de dados
-            Conexao.adicionaEvento(e);
-            
-            this.dispose();
-            new ListaEventos().setVisible(true);
-            
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
+        int id = AcessoBanco.novoIdEvento();//Conexao.novoIdEvento();
+        String titulo = campoTextoTitulo.getText();
+        String informacoes = campoTextoInformacoes.getText();
+        String dataPublicacao = pegarMinhaData(cldDataPublicacao.getDate().toString());
+        String dataExpiracao = pegarMinhaData(cldDataExpiracao.getDate().toString());
+
+        // vamos pegar a matricula do médico logado
+        String matriculaProfissional = Funcionario.funcionario.getMatricula();
+        Evento e = new Evento(titulo, dataPublicacao, dataExpiracao, informacoes, matriculaProfissional, id);
+
+        //vamos salvar o evento no banco de dados
+        AcessoBanco.adicionaEvento(e);
+
+        this.dispose();
+        //new ListaEventos().setVisible(true);
     }//GEN-LAST:event_btnAdicionarEventoActionPerformed
 
     public static String pegarMinhaData(String texto) {
@@ -228,11 +222,10 @@ public class AdicionarEvento extends javax.swing.JFrame {
         dataRetorno += vetor[2];
         return dataRetorno;
     }
-
     
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         this.dispose();
-        new ListaEventos().setVisible(true);
+        //new ListaEventos().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     public static void main(String args[]) {

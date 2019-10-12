@@ -2,7 +2,7 @@ package view;
 
 import controller.Estoque;
 import controller.Funcionario;
-import model.Conexao;
+import model.AcessoBanco;
 
 public class AddTipoMedicamento extends javax.swing.JFrame {
     public AddTipoMedicamento() {
@@ -168,7 +168,7 @@ public class AddTipoMedicamento extends javax.swing.JFrame {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         String matriculaProfissional = Funcionario.funcionario.getMatricula();
-        String idEstoque = Conexao.novoIdMedicamento();
+        String idEstoque = AcessoBanco.novoIdMedicamento();
      
         String nome = campoTextoNome.getText();
         String descricao = campoTextoDescricao.getText();
@@ -187,7 +187,7 @@ public class AddTipoMedicamento extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(null, "Não existe essa quantidade");
         }
         else {
-            Conexao.adicionaMedicamentoEstoque(new Estoque(nome, validade, quantidade, descricao, fabricacao, Integer.parseInt(idEstoque), matriculaProfissional));
+            AcessoBanco.adicionaMedicamentoEstoque(new Estoque(nome, validade, quantidade, descricao, fabricacao, Integer.parseInt(idEstoque), matriculaProfissional));
             ControleEstoque.atualizarTabelaEstoque();
             dispose();
         }

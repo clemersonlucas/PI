@@ -1,7 +1,7 @@
 package view;
 
 import controller.Paciente;
-import model.Conexao;
+import model.AcessoBanco;
 
 
 public class TelaCadatroUsuario extends javax.swing.JFrame {
@@ -407,7 +407,7 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
             
             
             // vamos verificar se o cpf ja está no banco
-            if (Conexao.verificaCpf(campoTextoCpf.getText()) == false){
+            if (AcessoBanco.cpfJaExiste(campoTextoCpf.getText()) == false){
                 Paciente paciente = new Paciente (
                     sexo,
                     ListaEtnias.getItemAt(ListaEtnias.getSelectedIndex()),
@@ -423,7 +423,7 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
                     nascimento,  campoTextoCpf.getText());
 
                 // vamos adicionar um novo paciente no banco
-                Conexao.adicionaPaciente (paciente);
+                AcessoBanco.adicionaPaciente(paciente);
 
                 javax.swing.JOptionPane.showMessageDialog(null, "Paciente Cadastrado com sucesso!");
                 this.dispose();

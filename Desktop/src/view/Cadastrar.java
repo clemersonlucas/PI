@@ -1,9 +1,7 @@
 package view;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.Conexao;
+import controller.Funcionario;
+import model.AcessoBanco;
 
 public class Cadastrar extends javax.swing.JFrame {
 
@@ -11,26 +9,16 @@ public class Cadastrar extends javax.swing.JFrame {
     
     public Cadastrar() {
         initComponents();
-        
         this.setTitle("Tela de Cadastro");
         this.setLocationRelativeTo(this);   
     
-        
-        try {
-            // vamos gerar uma matricula aleatoria
-            matricula = Conexao.novaMatricula();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-     
+        matricula = AcessoBanco.novaMatricula();
         lblMatricula.setText("Matricula: " + matricula);
         
         ListaTipoAcesso.removeAllItems();
-        
         ListaTipoAcesso.addItem("Acesso Médico");
         ListaTipoAcesso.addItem("Acesso Técnico");
         ListaTipoAcesso.addItem("Acesso Funcionario");
-        
         
         ListaTipoFuncao.removeAllItems();
         ListaTipoFuncao.addItem("Pediatra");
@@ -181,12 +169,8 @@ public class Cadastrar extends javax.swing.JFrame {
         String tipoAcesso = ListaTipoAcesso.getItemAt(ListaTipoAcesso.getSelectedIndex());
         String tipoFuncao = ListaTipoFuncao.getItemAt(ListaTipoFuncao.getSelectedIndex());
         
-        try {
-            Conexao.cadastraFuncionario(nome, tipoAcesso, tipoFuncao, senha, matricula);
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        
+        Funcionario funcionario = new Funcionario(nome, senha, matricula, tipoAcesso, tipoFuncao);
+        AcessoBanco.adicionaFuncionario(funcionario);
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_btnEntrarActionPerformed
