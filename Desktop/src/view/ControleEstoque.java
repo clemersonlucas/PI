@@ -2,7 +2,7 @@ package view;
 
 import controller.Estoque;
 import java.util.ArrayList;
-import model.Conexao;
+import model.AcessoBanco;
 
 public class ControleEstoque extends javax.swing.JFrame {
     public ControleEstoque() {
@@ -15,7 +15,7 @@ public class ControleEstoque extends javax.swing.JFrame {
     }
 
     public static void atualizarTabelaEstoque (){
-        ArrayList<Estoque> produtos = Conexao.pegarMedicamentoEstoque();
+        ArrayList<Estoque> produtos = AcessoBanco.pegarMedicamentoEstoque();
         String layout [] = {"Nome", "Fabricação", "Validade", "Quantidade", "Identificação"};
         String matriz [][] = new String [produtos.size()][layout.length];
         
@@ -87,7 +87,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         btnNovoMedicamento.setBackground(new java.awt.Color(40, 166, 166));
         btnNovoMedicamento.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         btnNovoMedicamento.setForeground(new java.awt.Color(255, 255, 255));
-        btnNovoMedicamento.setText("+ Medicamento");
+        btnNovoMedicamento.setText("Alterar");
         btnNovoMedicamento.setBorder(null);
         btnNovoMedicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +115,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         btnNovoEstoque.setBackground(new java.awt.Color(40, 166, 166));
         btnNovoEstoque.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         btnNovoEstoque.setForeground(new java.awt.Color(255, 255, 255));
-        btnNovoEstoque.setText("adicionar");
+        btnNovoEstoque.setText("Adicionar");
         btnNovoEstoque.setBorder(null);
         btnNovoEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +131,9 @@ public class ControleEstoque extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
@@ -145,16 +147,16 @@ public class ControleEstoque extends javax.swing.JFrame {
         PlanoDeFundo1Layout.setVerticalGroup(
             PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addGroup(PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(btnNovoMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(192, 192, 192))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +167,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PlanoDeFundo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PlanoDeFundo1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

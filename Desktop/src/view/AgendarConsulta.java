@@ -3,7 +3,6 @@ package view;
 import controller.Consulta;
 import controller.Funcionario;
 import model.AcessoBanco;
-import model.Conexao;
 
 public class AgendarConsulta extends javax.swing.JFrame {
 

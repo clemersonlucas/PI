@@ -4,7 +4,7 @@ import controller.Consulta;
 import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import model.Conexao;
+import model.AcessoBanco;
 
 public class ListaConsultas extends javax.swing.JFrame {
 
@@ -23,14 +23,13 @@ public class ListaConsultas extends javax.swing.JFrame {
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
                     int index = ListaConsultasAgendadas.getSelectedIndex();
-                    String nomePaciente = Conexao.descobriNomePaciente(consultasAgendadas.get(index).getParaPaciente());
+                    String nomePaciente = AcessoBanco.descobriNomePaciente(consultasAgendadas.get(index).getParaPaciente());
                   
                     Consulta c = consultasAgendadas.get(index); 
-                    String s[] = Conexao.descobriNomeProfissional(c.getQuemAgendou());
+                    //String s[] = AcessoBanco.descobriNomeProfissional(c.getQuemAgendou());
 
                     CampoTexoEditavel.setText("Paciente " + nomePaciente + "\n" + "Agendou uma consulta com " +
-                        c.getEspecialidade() + "\nData solicitada " + c.getData() + 
-                        "\nAgendado por " + s[0] + "  "+ "'"+ s[1] +"'");
+                        c.getEspecialidade() + "\nData solicitada " + c.getData() + "\n"+ c.getStatus());
                 }
             });
     }
@@ -38,14 +37,15 @@ public class ListaConsultas extends javax.swing.JFrame {
     
     
     public void atualizarComponetens(){
-        consultasAgendadas = Conexao.pegarTodasConsultas();
+        CampoTexoEditavel.setText("Escolha uma consulta");
+        consultasAgendadas = AcessoBanco.pegarTodasConsultas();
         ListaConsultasAgendadas.removeAll();
        
         String [] listData = new String[consultasAgendadas.size()];
         
         for (int i = 0; i < listData.length; i++) {
             listData[i] = 
-                Conexao.descobriNomePaciente(consultasAgendadas.get(i).getParaPaciente()) + // nome do paciente
+                AcessoBanco.descobriNomePaciente(consultasAgendadas.get(i).getParaPaciente()) + // nome do paciente
                 " agendou um " + consultasAgendadas.get(i).getEspecialidade();
         }
         // quando o usuário clicar no evento, será mostrada as informações sobre o mesmo
@@ -68,6 +68,7 @@ public class ListaConsultas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(771, 450));
 
         PlanoDeFundo.setBackground(new java.awt.Color(255, 255, 255));
         PlanoDeFundo.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -98,7 +99,7 @@ public class ListaConsultas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(CampoTexoEditavel);
 
         btnIndeferir.setBackground(new java.awt.Color(183, 25, 9));
-        btnIndeferir.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnIndeferir.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnIndeferir.setForeground(new java.awt.Color(254, 254, 254));
         btnIndeferir.setText("Indeferido");
         btnIndeferir.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +109,7 @@ public class ListaConsultas extends javax.swing.JFrame {
         });
 
         btnDeferir.setBackground(new java.awt.Color(40, 166, 166));
-        btnDeferir.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnDeferir.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btnDeferir.setForeground(new java.awt.Color(254, 254, 254));
         btnDeferir.setText("Deferido");
         btnDeferir.addActionListener(new java.awt.event.ActionListener() {
@@ -129,53 +130,55 @@ public class ListaConsultas extends javax.swing.JFrame {
                 .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PlanoDeFundoLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(btnIndeferir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeferir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PlanoDeFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(248, 248, 248))
+                        .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PlanoDeFundoLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PlanoDeFundoLayout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(btnIndeferir)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDeferir)))
+                        .addContainerGap(39, Short.MAX_VALUE))
+                    .addGroup(PlanoDeFundoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114))))
         );
         PlanoDeFundoLayout.setVerticalGroup(
             PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PlanoDeFundoLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(53, 53, 53)
                 .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(37, 37, 37)
-                .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PlanoDeFundoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PlanoDeFundoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnIndeferir)
-                            .addComponent(btnDeferir)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(92, 92, 92)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                            .addComponent(btnIndeferir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDeferir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PlanoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+            .addComponent(PlanoDeFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(PlanoDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(PlanoDeFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -190,7 +193,7 @@ public class ListaConsultas extends javax.swing.JFrame {
         int index = ListaConsultasAgendadas.getSelectedIndex();
         Consulta consulta = consultasAgendadas.get(index); 
         int id = consulta.getId();
-        Conexao.indeferirConsulta(id);
+        AcessoBanco.indeferirConsulta(id);
         atualizarComponetens();
     }//GEN-LAST:event_btnIndeferirActionPerformed
 
@@ -198,7 +201,7 @@ public class ListaConsultas extends javax.swing.JFrame {
         int index = ListaConsultasAgendadas.getSelectedIndex();
         Consulta consulta = consultasAgendadas.get(index); 
         int id = consulta.getId();
-        Conexao.deferirConsulta(id);
+        AcessoBanco.deferirConsulta(id);
         atualizarComponetens();
     }//GEN-LAST:event_btnDeferirActionPerformed
 

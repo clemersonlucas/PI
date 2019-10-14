@@ -4,8 +4,8 @@ import controller.Paciente;
 import model.AcessoBanco;
 
 
-public class TelaCadatroUsuario extends javax.swing.JFrame {
-    public TelaCadatroUsuario() {
+public class CadatroUsuario extends javax.swing.JFrame {
+    public CadatroUsuario() {
         initComponents();
         this.setTitle("Tela novo paciente");
         this.setLocationRelativeTo(this); 
@@ -333,7 +333,7 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
                 .addGroup(jPanelTelaDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -443,7 +443,7 @@ public class TelaCadatroUsuario extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadatroUsuario().setVisible(true);
+                new CadatroUsuario().setVisible(true);
             }
         });
     }

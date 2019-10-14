@@ -1,11 +1,7 @@
 package view;
 
 import controller.Funcionario;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.AcessoBanco;
-import model.Conexao;
 
 public class Login extends javax.swing.JFrame {
 

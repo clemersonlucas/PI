@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PlanoDeFundo" alignment="0" max="32767" attributes="0"/>
+          <Component id="PlanoDeFundo" alignment="0" pref="660" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -46,44 +46,43 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblNome" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
-                          <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnListarConsultas" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="btnEventos" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="btnMedicamento" alignment="1" min="-2" pref="165" max="-2" attributes="0"/>
+                              <Component id="btnListarConsultas" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnEventos" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnMedicamento" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnProntuario" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnAdicionarPaciente" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="btnConsultar" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="btnExame" min="-2" pref="165" max="-2" attributes="0"/>
+                              <Component id="btnAdicionarPaciente" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnConsultar" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnExame" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnPrescricao" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnSairDaConta" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="btnAdicionarPaciente1" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="btnEstoque" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="btnVacinar" min="-2" pref="165" max="-2" attributes="0"/>
+                              <Component id="btnSairDaConta" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnAdicionarPaciente1" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnEstoque" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btnVacinar" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnEventos" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="btnAdicionarPaciente" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -102,7 +101,11 @@
                       <Component id="btnVacinar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnSairDaConta" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnSairDaConta" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnProntuario" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnPrescricao" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -120,7 +123,7 @@
         <Component class="javax.swing.JButton" name="btnEventos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
+              <Color blue="a6" green="a6" red="28" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="16" style="1"/>
@@ -285,6 +288,40 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVacinarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnProntuario">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="a6" green="a6" red="28" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="16" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="fe" red="fe" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Prontu&#xe1;rio"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProntuarioActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnPrescricao">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="a6" green="70" red="28" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="16" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="fe" red="fe" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Prescri&#xe7;&#xe3;o"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrescricaoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -3,7 +3,6 @@ package view;
 import controller.Funcionario;
 import controller.Medicamento;
 import model.AcessoBanco;
-import model.Conexao;
 
 public class ReceitarMedicamento extends javax.swing.JFrame {
 
@@ -214,7 +213,7 @@ public class ReceitarMedicamento extends javax.swing.JFrame {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         //vamos verificar se o cpf existe
-        String nomePaciente = Conexao.descobriNomePaciente(campoTextoCpf.getText());
+        String nomePaciente = AcessoBanco.descobriNomePaciente(campoTextoCpf.getText());
         String matriculaProfissional = Funcionario.funcionario.getMatricula();
         
         String fimTratamento = view.AdicionarEvento.pegarMinhaData(dataFim.getDate().toString());
@@ -244,7 +243,7 @@ public class ReceitarMedicamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
-        String nomePaciente = Conexao.descobriNomePaciente(campoTextoCpf.getText());
+        String nomePaciente = AcessoBanco.descobriNomePaciente(campoTextoCpf.getText());
         if (nomePaciente == null){
             javax.swing.JOptionPane.showMessageDialog(null, "Paciente não encontrado");
         }

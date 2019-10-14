@@ -15,6 +15,7 @@ public class Paciente {
     // para os telefones do usuário
     public static ArrayList<String> telefones = new ArrayList<>();
     
+    public Paciente (){}
     
     public Paciente(String sexo, String etinia, String senha, 
             String estadoCivil, String rg, String orgaoEmissor, 
