@@ -27,7 +27,7 @@ public class InicialMedico extends javax.swing.JFrame {
         btnExame = new javax.swing.JButton();
         btnVacinar = new javax.swing.JButton();
         btnProntuario = new javax.swing.JButton();
-        btnPrescricao = new javax.swing.JButton();
+        btnContatoPaciente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,7 +127,7 @@ public class InicialMedico extends javax.swing.JFrame {
             }
         });
 
-        btnVacinar.setBackground(new java.awt.Color(40, 112, 166));
+        btnVacinar.setBackground(new java.awt.Color(40, 166, 166));
         btnVacinar.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         btnVacinar.setForeground(new java.awt.Color(254, 254, 254));
         btnVacinar.setText("Vacinação");
@@ -147,13 +147,13 @@ public class InicialMedico extends javax.swing.JFrame {
             }
         });
 
-        btnPrescricao.setBackground(new java.awt.Color(40, 112, 166));
-        btnPrescricao.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
-        btnPrescricao.setForeground(new java.awt.Color(254, 254, 254));
-        btnPrescricao.setText("Prescrição");
-        btnPrescricao.addActionListener(new java.awt.event.ActionListener() {
+        btnContatoPaciente.setBackground(new java.awt.Color(40, 166, 166));
+        btnContatoPaciente.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        btnContatoPaciente.setForeground(new java.awt.Color(254, 254, 254));
+        btnContatoPaciente.setText("Contato");
+        btnContatoPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrescricaoActionPerformed(evt);
+                btnContatoPacienteActionPerformed(evt);
             }
         });
 
@@ -172,11 +172,12 @@ public class InicialMedico extends javax.swing.JFrame {
                             .addComponent(btnMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdicionarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExame, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPrescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnAdicionarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnExame, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnContatoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSairDaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +210,7 @@ public class InicialMedico extends javax.swing.JFrame {
                 .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSairDaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnContatoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -242,48 +243,43 @@ public class InicialMedico extends javax.swing.JFrame {
         this.dispose();
         new CadatroUsuario().setVisible(true);
     }//GEN-LAST:event_btnAdicionarPacienteActionPerformed
-
     private void btnAdicionarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPaciente1ActionPerformed
         this.dispose();
         new AgendarConsulta().setVisible(true);
     }//GEN-LAST:event_btnAdicionarPaciente1ActionPerformed
-
     private void btnListarConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarConsultasActionPerformed
         this.dispose();
         new ListaConsultas().setVisible(true);
     }//GEN-LAST:event_btnListarConsultasActionPerformed
-
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         this.dispose();
         new Consultar().setVisible(true);
     }//GEN-LAST:event_btnConsultarActionPerformed
-
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
         this.dispose();
         new ControleEstoque().setVisible(true);
     }//GEN-LAST:event_btnEstoqueActionPerformed
-
     private void btnMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentoActionPerformed
         new ReceitarMedicamento().setVisible(true);
     }//GEN-LAST:event_btnMedicamentoActionPerformed
-
     private void btnExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExameActionPerformed
+        this.dispose ();
     }//GEN-LAST:event_btnExameActionPerformed
-
+    // botão acessa a tela para cadastrar a vacinação de um paciente
     private void btnVacinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacinarActionPerformed
-        
+        this.dispose ();
+        new VacinarPaciente().setVisible(true);
     }//GEN-LAST:event_btnVacinarActionPerformed
-
     private void btnProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProntuarioActionPerformed
         this.dispose();
         new Protuario().setVisible(true);
     }//GEN-LAST:event_btnProntuarioActionPerformed
+    // botão rsponsável por chamar a tela de contatos dos pacientes cadastrados
+    private void btnContatoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContatoPacienteActionPerformed
+        this.dispose();
+        new ContatoPaciente().setVisible(true);
+    }//GEN-LAST:event_btnContatoPacienteActionPerformed
 
-    private void btnPrescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrescricaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrescricaoActionPerformed
-
-        
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -297,12 +293,12 @@ public class InicialMedico extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionarPaciente;
     private javax.swing.JButton btnAdicionarPaciente1;
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnContatoPaciente;
     private javax.swing.JButton btnEstoque;
     private javax.swing.JButton btnEventos;
     private javax.swing.JButton btnExame;
     private javax.swing.JButton btnListarConsultas;
     private javax.swing.JButton btnMedicamento;
-    private javax.swing.JButton btnPrescricao;
     private javax.swing.JButton btnProntuario;
     private javax.swing.JButton btnSairDaConta;
     private javax.swing.JButton btnVacinar;

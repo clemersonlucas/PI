@@ -67,6 +67,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         tabelaEstoque = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         btnNovoEstoque = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,7 +75,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         PlanoDeFundo1.setPreferredSize(new java.awt.Dimension(600, 600));
 
         btnVoltar.setBackground(new java.awt.Color(40, 166, 166));
-        btnVoltar.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        btnVoltar.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar.setText("Voltar");
         btnVoltar.setBorder(null);
@@ -85,7 +86,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         });
 
         btnNovoMedicamento.setBackground(new java.awt.Color(40, 166, 166));
-        btnNovoMedicamento.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        btnNovoMedicamento.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         btnNovoMedicamento.setForeground(new java.awt.Color(255, 255, 255));
         btnNovoMedicamento.setText("Alterar");
         btnNovoMedicamento.setBorder(null);
@@ -113,7 +114,7 @@ public class ControleEstoque extends javax.swing.JFrame {
         jLabel3.setText("Medicamentos no Estoque");
 
         btnNovoEstoque.setBackground(new java.awt.Color(40, 166, 166));
-        btnNovoEstoque.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        btnNovoEstoque.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         btnNovoEstoque.setForeground(new java.awt.Color(255, 255, 255));
         btnNovoEstoque.setText("Adicionar");
         btnNovoEstoque.setBorder(null);
@@ -123,26 +124,40 @@ public class ControleEstoque extends javax.swing.JFrame {
             }
         });
 
+        btnRemover.setBackground(new java.awt.Color(40, 166, 166));
+        btnRemover.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnRemover.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemover.setText("Remover");
+        btnRemover.setBorder(null);
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PlanoDeFundo1Layout = new javax.swing.GroupLayout(PlanoDeFundo1);
         PlanoDeFundo1.setLayout(PlanoDeFundo1Layout);
         PlanoDeFundo1Layout.setHorizontalGroup(
             PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
                 .addGroup(PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44)
+                        .addGroup(PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
+                                .addGap(123, 123, 123)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNovoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNovoEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(54, Short.MAX_VALUE))
-            .addGroup(PlanoDeFundo1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnNovoEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnNovoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         PlanoDeFundo1Layout.setVerticalGroup(
             PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,12 +166,13 @@ public class ControleEstoque extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(PlanoDeFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovoEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(btnNovoMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(46, 46, 46))
+                    .addComponent(btnNovoEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNovoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,6 +202,10 @@ public class ControleEstoque extends javax.swing.JFrame {
         new AddTipoMedicamento().setVisible(true);
     }//GEN-LAST:event_btnNovoEstoqueActionPerformed
 
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        new removerMedicamentoEstoque().setVisible(true);
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -198,6 +218,7 @@ public class ControleEstoque extends javax.swing.JFrame {
     private javax.swing.JPanel PlanoDeFundo1;
     private javax.swing.JButton btnNovoEstoque;
     private javax.swing.JButton btnNovoMedicamento;
+    private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel3;
     private static javax.swing.JScrollPane jScrollPane1;

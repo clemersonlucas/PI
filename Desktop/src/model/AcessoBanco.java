@@ -3,41 +3,77 @@ package model;
 import controller.Consulta;
 import controller.Estoque;
 import controller.Evento;
+import controller.Exame;
 import controller.Funcionario;
 import controller.Medicamento;
 import controller.Paciente;
+import controller.Vacina;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AcessoBanco {
 
-    public static String user = "lucas";
-    public static String password = "pamonha";
+    public static String user = "hospitaid";
+    public static String password = "senhahospitaid";
     public static String nameClass = "com.mysql.jdbc.Driver";
-    public static String url = "jdbc:mysql://localhost/ServerHospitaid";
+    public static String url = "jdbc:mysql://localhost/hospitaid";
     public static boolean result = false;
     public static ResultSet resultSet = null;
     public static Statement statement = null;
     public static Connection connection = null;
 
+    
+    // método para testar a conexão com um IP de u servidor
+    public static boolean testConnection (String ip){
+        String urlForTest = "jdbc:mysql://" + ip + "/hospitaid";
+        try {
+            Class.forName(nameClass);
+            connection = DriverManager.getConnection(urlForTest, user, password);
+            statement = connection.createStatement();
+            statement.close();
+            connection.close();
+            return true;
+        }
+        catch (ClassNotFoundException ex) {
+            System.err.println(ex.getMessage());
+        } 
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return false;
+    }
+    
 
     // MÉTODOS PARA A CONEXÃO COM O BANCO
     private static void execute (String comando){
-        try {
-            Class.forName(nameClass);
-            connection = DriverManager.getConnection(url, user, password);
-            statement = connection.createStatement();
-            result = statement.execute(comando);
-            resultSet = statement.getResultSet();
+        String ipConfigurado = config.ConfigIP.read();
+        
+        // vamos testar a conexão com o servidor para obter dados depois
+        if (testConnection(ipConfigurado)){
+            url = "jdbc:mysql://" + ipConfigurado + "/hospitaid";
+            try {
+                Class.forName(nameClass);
+                connection = DriverManager.getConnection(url, user, password);
+                statement = connection.createStatement();
+                result = statement.execute(comando);
+                resultSet = statement.getResultSet();
 
-        } catch (ClassNotFoundException ex) {
-            System.err.println(ex.getMessage());
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+            } catch (ClassNotFoundException ex) {
+                System.err.println(ex.getMessage());
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+        // deu erro ao se conectar com o servidor
+        else {
+            javax.swing.JOptionPane.showMessageDialog(null, "falha no servidor!");
         }
     }
 
@@ -50,7 +86,6 @@ public class AcessoBanco {
             System.err.println(ex.getMessage());
         }
     }
-
     private static void endConnectionSemResultSet (){
         try {
             statement.close();
@@ -61,7 +96,12 @@ public class AcessoBanco {
     }
 
 
-    // MÉTODOS PARA REMOVER TABELAS
+    // DELETE
+    public static void deletarMedicamento (int id){
+        String sql = "DELETE FROM Estoque WHERE id = '" + id + "';";
+        execute(sql);
+        endConnectionSemResultSet();
+    }
     public static void deletarEvento (int id) {
         String sql = "DELETE FROM Evento WHERE id = '"+ id +"';";
         execute(sql);
@@ -74,7 +114,14 @@ public class AcessoBanco {
     }
 
 
-    // MÉTODOS PARA ADICIONAR
+    // INSERT     
+    public static void adicionaVacina (Vacina vacina){
+        String sql = "INSERT INTO Vacinacao VALUES ('" + vacina.getData() + "','" + vacina.getId() + "','"
+            + vacina.getMatriculaProfisional() + "','" + vacina.getCpfPaciente() + "','" + vacina.getIdEstoque() + "');";
+    
+        execute(sql);
+        endConnectionSemResultSet();
+    }
     public static void adicionaConsulta (Consulta consulta){
         String sql = "INSERT INTO Consulta VALUES ('" + consulta.getData() + "','"  + consulta.getDescricao()
             + "','"  + consulta.getDiagnostico() + "','"  + consulta.getHora() + "','"  + consulta.getStatus()
@@ -116,8 +163,18 @@ public class AcessoBanco {
         endConnectionSemResultSet();
     }
 
-
-
+    
+    public static void adicionaExame (Exame exame){
+        String sql = "INSERT INTO exame VALUES ('" + exame.getTipo() + 
+                "','" + exame.getData() + "','"
+                + exame.getId() + "','" + exame.getCpfPaciente() +
+                "','" + exame.getMatriculaProfissional() + "');";
+        
+        execute(sql);
+        endConnectionSemResultSet();
+    } 
+    
+    
     // GERAR NOVA CHAVE PRIMÁRIA
     public static String novoIdMedicamento (){
         String sql = "SELECT * FROM Medicamento;";
@@ -234,10 +291,42 @@ public class AcessoBanco {
         endConnection();
         return null;
     }
+    public static String novoIdVacinacao () {
+        String sql = "SELECT id FROM Vacinacao;";
+        execute(sql);
+
+        boolean sairLoop = true;
+        while (sairLoop == true){
+            String novaMatricula = Integer.toString((int)(Math.random() * 100000));
+            if (novaMatricula.length() == 5){
+                try {
+                    while (resultSet.next()){
+                        String m = resultSet.getString("id");
+                        if (novaMatricula.equals(m)){
+                            break;
+                        }
+                    }
+
+                    if (sairLoop == true){
+                        return novaMatricula;
+                    }
+                } catch (SQLException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            }
+        }
+        endConnection();
+        return null;
+    }
 
 
-
-    // PARTE DE BUSCAS NO BANCO DE DADOS
+    // SELECT
+    public static void preescreverMedicamento (Medicamento medicamento){
+        String sql = "INSERT INTO Medicamento VALUES ('" + medicamento.getNome() + "','" + medicamento.getDataFinal()+ "','" + medicamento.getDataInicial()+ "','" +
+        medicamento.getIntervaloHoras() + "','" + medicamento.getId() + "','" +  medicamento.getCpfPaciente() + "','" + medicamento.getMatriculaProfissional() + "');";
+        execute(sql);
+        endConnectionSemResultSet();
+    }
     public static Paciente encontrarPaciente (String cpf){
         Paciente paciente = new Paciente ();
        
@@ -311,8 +400,6 @@ public class AcessoBanco {
         endConnection();
         return false;
     }
-    
-    
     public static Funcionario fazerLogin (String matricula, String senha) {
         String sql = "SELECT * FROM Profissional;";
         execute(sql);
@@ -402,6 +489,20 @@ public class AcessoBanco {
         endConnection ();
         return listaRetorno;
     }
+    public static String nomeCompletoPaciente (String cpf){
+        String sql = "SELECT nome FROM Paciente WHERE cpf = '" + cpf + "';";
+        execute(sql);
+        String s = null;
+        try {
+            while (resultSet.next()){
+                s = resultSet.getString("nome");
+            }
+        } catch (SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+        endConnection();
+        return s;
+    }
     public static String descobriNomePaciente (String cpf){
         String sql = "SELECT nome FROM Paciente WHERE cpf = '" + cpf + "';";
         execute(sql);
@@ -438,9 +539,24 @@ public class AcessoBanco {
         }
         endConnection();
         return listaRetorno;
-    }
-    
-    
+    } 
+    public static ArrayList<String> pegaContatoPaciente (String cpf){
+        String sql = "SELECT telefone FROM TelefonePaciente WHERE cpfPaciente = '" + cpf + "';";
+        execute(sql);
+        
+        ArrayList<String> listaTelefone = new ArrayList<>();
+        
+        try {
+            while (resultSet.next()){
+                listaTelefone.add(resultSet.getString("telefone"));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        endConnection();
+        
+        return listaTelefone;
+    }    
     public static ArrayList<Consulta> consultasDeferidas (String especialidade){
         ArrayList<Consulta> retorno = new ArrayList<>();
         String sql = "SELECT * FROM Consulta WHERE status = 'Deferido' AND especialidade = '" + especialidade + "';";
@@ -489,16 +605,7 @@ public class AcessoBanco {
         endConnection();
         return s;
     }
-
-
-    // AÇÕES QUE O PROFISSIONAL PODE FAZER
-    public static void preescreverMedicamento (Medicamento medicamento){
-        String sql = "INSERT INTO Medicamento VALUES ('" + medicamento.getNome() + "','" + medicamento.getDataFinal()+ "','" + medicamento.getDataInicial()+ "','" +
-        medicamento.getIntervaloHoras() + "','" + medicamento.getId() + "','" +  medicamento.getCpfPaciente() + "','" + medicamento.getMatriculaProfissional() + "');";
-        execute(sql);
-        endConnectionSemResultSet();
-    }
-
+    
 
     // UPDATE
     public static void deferirConsulta (int id){
@@ -536,5 +643,4 @@ public class AcessoBanco {
         execute(sql);
         endConnectionSemResultSet();
     }
-
 }

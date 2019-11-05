@@ -58,11 +58,13 @@
                               <Component id="btnProntuario" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnAdicionarPaciente" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnConsultar" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnExame" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnPrescricao" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnAdicionarPaciente" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="btnConsultar" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="btnExame" min="-2" pref="180" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="btnContatoPaciente" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -104,7 +106,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSairDaConta" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="btnProntuario" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnPrescricao" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnContatoPaciente" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
@@ -276,7 +278,7 @@
         <Component class="javax.swing.JButton" name="btnVacinar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="a6" green="70" red="28" type="rgb"/>
+              <Color blue="a6" green="a6" red="28" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="16" style="1"/>
@@ -307,10 +309,10 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProntuarioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnPrescricao">
+        <Component class="javax.swing.JButton" name="btnContatoPaciente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="a6" green="70" red="28" type="rgb"/>
+              <Color blue="a6" green="a6" red="28" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="16" style="1"/>
@@ -318,10 +320,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="fe" red="fe" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Prescri&#xe7;&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Contato"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrescricaoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContatoPacienteActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

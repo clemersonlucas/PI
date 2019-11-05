@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
         campoMatricula = new javax.swing.JTextField();
         campoSenha = new javax.swing.JPasswordField();
         lblNotificacao = new javax.swing.JLabel();
+        btnConfiguarIp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,16 +58,38 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        campoMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoMatriculaActionPerformed(evt);
+            }
+        });
+
         lblNotificacao.setBackground(new java.awt.Color(255, 255, 255));
         lblNotificacao.setForeground(new java.awt.Color(255, 0, 0));
+
+        btnConfiguarIp.setBackground(new java.awt.Color(255, 255, 255));
+        btnConfiguarIp.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        btnConfiguarIp.setForeground(new java.awt.Color(40, 166, 166));
+        btnConfiguarIp.setText("Configurar Servidor");
+        btnConfiguarIp.setBorder(null);
+        btnConfiguarIp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfiguarIpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PlanoDeFundoLayout = new javax.swing.GroupLayout(PlanoDeFundo);
         PlanoDeFundo.setLayout(PlanoDeFundoLayout);
         PlanoDeFundoLayout.setHorizontalGroup(
             PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PlanoDeFundoLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(lblNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PlanoDeFundoLayout.createSequentialGroup()
                 .addContainerGap(167, Short.MAX_VALUE)
                 .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnConfiguarIp, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(campoMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
@@ -77,10 +100,6 @@ public class Login extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(151, 151, 151))
-            .addGroup(PlanoDeFundoLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(lblNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PlanoDeFundoLayout.setVerticalGroup(
             PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +116,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(PlanoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(98, 98, 98)
+                .addGap(44, 44, 44)
+                .addComponent(btnConfiguarIp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -154,6 +175,15 @@ public class Login extends javax.swing.JFrame {
         new Cadastrar().setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void campoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoMatriculaActionPerformed
+
+    private void btnConfiguarIpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguarIpActionPerformed
+        this.dispose();
+        new TelaConfigIp().setVisible(true);
+    }//GEN-LAST:event_btnConfiguarIpActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -165,6 +195,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PlanoDeFundo;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnConfiguarIp;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JTextField campoMatricula;
     private javax.swing.JPasswordField campoSenha;
