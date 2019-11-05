@@ -1,0 +1,11 @@
+/* AUTOMATICALLY GENERATED ON Sat Nov 02 21:03:06 BRT 2019*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "MyWebService", "hello,Local,java.lang.String";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "MyWebService", "**";
+};
+
