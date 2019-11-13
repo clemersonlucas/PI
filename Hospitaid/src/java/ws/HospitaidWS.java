@@ -5,7 +5,6 @@ import com.hospitaid.webservice.controller.*;
 import com.hospitaid.webservice.dao.*;
 import java.util.ArrayList;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -33,9 +32,9 @@ public class HospitaidWS {
     // TESTE INSERT 
     @GET
     @Produces("application/text")
-    @Path ("inserirPaciente/{sexo}/{etinia}/{senha}/{estadoCivil}/{rg}/{orgaoEmissor}/{dataExpedicao}/"
+    @Path ("inserirPaciente/{sexo}/{etnia}/{senha}/{estadoCivil}/{rg}/{orgaoEmissor}/{dataExpedicao}/"
             + "{uf}/{observacoes}/{nomePai}/{nomeMae}/{nome}/{sus}/{fotoPerfil}/{nacionalidade}"
-            + "/{naturalidade}/{nasciento}/{cpf}")
+            + "/{naturalidade}/{nascimento}/{cpf}")
     public String inserirPaciente (
         @PathParam("sexo") String sexo,
         @PathParam("etnia") String etnia,
@@ -43,7 +42,6 @@ public class HospitaidWS {
         @PathParam("estadoCivil") String estadoCivil,
         @PathParam("rg") String rg,
         @PathParam("orgaoEmissor") String orgaoEmissor,
-            
         @PathParam("dataExpedicao") String dataExpedicao,
         @PathParam("uf") String uf,
         @PathParam("observcaoes") String observcaoes,
@@ -62,7 +60,7 @@ public class HospitaidWS {
                 fotoPerfil, nacionalidade, naturalidade, nascimento, cpf);
         
         PacienteDAO.inserir(paciente);
-        return "succes!";        
+        return "succes1!";        
     }
     
     @GET
@@ -86,7 +84,7 @@ public class HospitaidWS {
         
         ConsultaDAO.inserir(new Consulta(data, diagnostico, hora, descricao, status, 
                 incioConsulta, fimConsulta, entrada, especialidade, id, quemAgendou, paraPaciente));
-        return "succes!";
+        return "succes2!";
     }
     
     @GET
@@ -104,12 +102,8 @@ public class HospitaidWS {
         
         MedicamentoDAO.insert(new Medicamento(nome, dataInicial, dataFinal, 
                 intevaloHoras, id, cpfPaciente, matriculaProfissional));
-        return "succes!";
+        return "succes3!";
     }
-    
-    
-    
-    
     
     
     // TESTE DELETE 

@@ -5,12 +5,11 @@ import java.sql.*;
 public class AcessoBanco {
 
     public static String ipRaspberryPi = "10.160.4.132";
-    public static String ipNotebook = "localhost";
     
     public static String user = "lucas";
     public static String password = "pamonha";
     public static String nameClass = "com.mysql.jdbc.Driver";
-    public static String url = "jdbc:mysql://" + ipNotebook + "/hospitaid";
+    public static String url = "jdbc:mysql://localhost/hospitaid";
     public static boolean result = false;
     public static ResultSet resultSet = null;
     public static Statement statement = null;
